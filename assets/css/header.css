@@ -1,30 +1,69 @@
-header{
-    background-color: rgb(19, 66, 184);
+
+
+#header-base{
+    border-bottom: 1px solid lightgrey;
+    width: 100%;
+    position: sticky;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    top:0;
+    z-index: 1;
+}
+
+.header{
     display: flex;
     justify-content: space-between;
-    margin: 0;
-    align-items: center;
-    color: white;
-    position: sticky;
+    width: 100%;
 }
 
-header ul{
-    list-style: none;
-    padding: 0;
+#notif{
+    position: relative;
 }
 
-header li{
-    display: inline-block;
-    padding: 5px;
-}
-
-header #logo{
-    font-size: xx-large;
-    padding: 8px;
-    font-weight: 900;
-}
-
-header a{
+#notification{
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
     color: white;
     text-decoration: none;
+    top: -5px;
+    right: 1px;
+    font-size: 12px;
+    width: 15px;
+    text-align: center;
+}
+
+.profile-img{
+    border-radius: 50%;
+    overflow: hidden;
+    height: 2rem;
+}
+
+.head-icon{
+    display: flex;
+    align-items: center;
+}
+
+table, td {
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+td{
+    padding: 0.5rem;
+}
+
+.hide{
+    width:0;
+    height: 0;
+    overflow: hidden;
+}
+
+#menulist{
+    position: absolute;
+    right:15%;
+    top:3.5rem
 }

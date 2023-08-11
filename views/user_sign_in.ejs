@@ -1,19 +1,34 @@
-<link rel="stylesheet" href="css/home.css">
-<div>
-    <h2>Signin</h2>
-    <form action="/users/create-session" method="post">
-        <label>Email</label>
-        <input type="email" name="email" required>
-        <label>Password</label>
-        <input type="password" name="password" required>
-        <input type="submit" value="login">
-    </form>
+<link rel="stylesheet" type="text/css" href="/css/signin.css">
 
-    <p>
-        <a href="/users/auth/google">Google signin/signup</a>
-    </p>
-    <p>
-        <a href="/users/forgot_password/">Forgot password?</a>
-    </p>
+<div id="signin-container">
+    <div id="login-img-container">
+        <img src="/images/signin.jpg" alt="Instagram" id="loginimg">
+    </div>
+    <div id="login-form-container">
+        <div class="container-border" class="center-align">
+            <img src="/images/logo.png" alt="logo">
+            <form action="/users/create-session" method="post" class="center-align">
+                <input type="email" name="email" required placeholder="Email" class="margin">
+                <br>
+                <input type="password" name="password" required placeholder="Password" class="margin">
+                <br>
+                <input type="submit" value="Log in" class="margin" id="submit-btn">
+            </form>
+        </div>
+        <div class="container-border center-align">
+            <a href="/users/auth/google"><i class="fa-brands fa-google"></i> Login with Google</a>
+            <br><br>
+            <a href="/users/auth/google"><i class="fa-brands fa-facebook"></i> Login with Facebook</a>
+            <br><br>
+            <a href="/users/auth/google"><i class="fa-brands fa-github"></i> Login with Github</a>
+        </div>
+        <div>
+            <span>Don't have an account? <a href="/users/signup">Sign Up</a></span>
+        </div>
+        <p>
+            <a href="/users/forgot_password/">Forgot password?</a>
+        </p>
+    </div>
+    
 
 </div>

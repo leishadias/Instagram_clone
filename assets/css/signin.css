@@ -1,0 +1,49 @@
+#signin-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#loginimg{
+    width: 100%;
+}
+
+#signin-container #login-img-container{
+    padding: 1rem;
+    width: 50%;
+}
+
+#signin-container #login-form-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    width: 40%;
+}
+
+#signin-container #login-form-container #submit-btn{
+    background-color: #0598f2;
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+
+#signin-container .container-border{
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    width: 95%;
+    margin: 5px 0;
+    text-align: center;
+}
+
+#signin-container .margin{
+    padding: 5px 5px;
+    margin: 10px 5px;
+    width: -webkit-fill-available;
+}
+
+#signin-container .center-align{
+    text-align: center;
+}

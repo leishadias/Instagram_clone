@@ -1,11 +1,46 @@
 body{
-    margin: 0;
+    align-items: center;
+    background-color: #fafafa;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
 }
 
 main{
-    min-height: 90vh;
+    display: flex;
 }
 
-h1{
-    margin-top: 0;
+i{
+    color: black;
+    font-size: 1.5rem;
+}
+
+.padding-05{
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+}
+
+.padding-10{
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.bg-dark{
+    background-color: #fafafa;
+}
+
+.bg-white{
+    background-color: #ffffff;
+}
+
+.m-top{
+    margin-top: 0.5rem;
+}
+
+.m-bottom{
+    margin-bottom: 0.5rem;
+}
+
+a{
+    color: black;
+    text-decoration: none;
 }

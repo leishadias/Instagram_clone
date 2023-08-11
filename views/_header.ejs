@@ -1,14 +1,43 @@
-<header>
-    <div><span id="logo">Codial</span></div>
+
+<header id="header-base" class="bg-white">
+    <div class="header">
+    <img src="images/logo.png" alt="logo" >
     <% if(locals.user){ %>
-        <ul>
-            <li><a href="/users/signout">Sign out</a></li>
-            <li><a href="/users/profile/<%= user.id %>"><%= user.name %></a></li>
-        </ul>
+        <div >
+        <button type="button" class="padding-10" id="searchbtn">Search</button>
+        
+        <div class="head-icon">
+            <a class="padding-05" href="#"><i class="fa-solid fa-house"></i></a>
+            
+            <a class="padding-05" href="#" id="notif">
+                <i class="fa-brands fa-facebook-messenger"></i>
+                <div id="notification">2</div>
+            </a>
+
+            <a class="padding-05" href="#"><i class="fa-regular fa-square-plus"></i></a>
+            <a class="padding-05" href="#"><i class="fa-sharp fa-regular fa-compass"></i></a>
+            <a class="padding-05" href="#"><i class="fa-regular fa-heart"></i></a>
+            <a href="#menulist" class="profile-img padding-05"><img src="<%= user.avatar %>" alt="profile pic" class="profile-img" id="profile" ></a>
+            <div id="menulist" class="hide">
+                <table>
+                    <tr>
+                        <td><i class="fa-regular fa-circle-user"></i> Profile</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/users/signout">Sign out</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        </div>
     <% }else{ %>
-        <ul>
-            <li><a href="/users/signin">Sign In</a></li>
-            <li><a href="/users/signup">Sign Up</a></li>
-        </ul>
+        <div>
+            <a href="/users/signin" class="padding-05">Sign In</a>
+            <a href="/users/signup">Sign Up</a>
+        </div>
+        
     <% } %>
+    </div>
 </header>
+
+

@@ -1,0 +1,22 @@
+aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 98vh;
+    border-right: 1px solid lightgray;
+    padding: 0 1rem;
+}
+
+aside ul{
+    list-style: none;
+    padding: 0;
+}  
+
+aside li{
+    padding: 1rem 3px;
+    border-radius: 15px;
+}
+
+aside li:hover{
+    background-color: lightgray;
+}
