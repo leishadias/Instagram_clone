@@ -1,0 +1,14 @@
+<header>
+    <div><span id="logo">Codial</span></div>
+    <% if(locals.user){ %>
+        <ul>
+            <li><a href="/users/signout">Sign out</a></li>
+            <li><a href="/users/profile/<%= user.id %>"><%= user.name %></a></li>
+        </ul>
+    <% }else{ %>
+        <ul>
+            <li><a href="/users/signin">Sign In</a></li>
+            <li><a href="/users/signup">Sign Up</a></li>
+        </ul>
+    <% } %>
+</header>

@@ -1,0 +1,30 @@
+header{
+    background-color: rgb(19, 66, 184);
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    align-items: center;
+    color: white;
+    position: sticky;
+}
+
+header ul{
+    list-style: none;
+    padding: 0;
+}
+
+header li{
+    display: inline-block;
+    padding: 5px;
+}
+
+header #logo{
+    font-size: xx-large;
+    padding: 8px;
+    font-weight: 900;
+}
+
+header a{
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,17 @@
+footer{
+    background-color: rgb(94, 93, 93);
+    display: flex;
+    padding: 5px;
+    color: white;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0px 10px;
+    margin: 0;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+}
