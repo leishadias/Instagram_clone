@@ -1,15 +1,15 @@
 aside{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     height: 98vh;
     border-right: 1px solid lightgray;
     padding: 0 1rem;
+    position: fixed;
+    width:150px;
 }
 
 aside ul{
     list-style: none;
     padding: 0;
+    /* margin: 0; */
 }  
 
 aside li{

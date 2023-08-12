@@ -6,7 +6,9 @@ body{
 }
 
 main{
-    display: flex;
+    /* display: flex; */
+    /* display: inline-block; */
+    margin-left: 200px;
 }
 
 i{

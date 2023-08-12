@@ -16,11 +16,10 @@
     <%- style %>
 </head>
 <body>
-    
+    <% if(locals.user){ %>
+        <%- include('_aside'); %>
+    <% } %>
     <main>
-        <% if(locals.user){ %>
-            <%- include('_aside'); %>
-        <% } %>
         <section>
             <%- body %>
         </section>
