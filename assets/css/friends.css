@@ -1,0 +1,36 @@
+#friends-list-container{
+    /* width: 200px; */
+    flex-basis: 300px;
+    /* padding-left: 1rem; */
+}
+
+.col-grey{
+    color: #535353;
+}
+
+.suggest-head{
+    padding-top: 0.5rem;
+    font-size: large;
+}
+
+.suggest-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#friends-list-container .profile-det{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggest-pic{
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+}
+
+.suggest-desc{
+    margin-left: 0.5rem;
+}

@@ -3,7 +3,7 @@
         <img src="images/logo.png" alt="logo" >
         <!-- <i class="fa-brands fa-instagram"></i> -->
     </div>
-    
+    <% if(locals.user){ %>
     <ul>
         <li>
             <a class="padding-05" href="#"><i class="fa-solid fa-house"></i></a>
@@ -21,7 +21,7 @@
             <span>Messages</span>
         </li>
         <li>
-            <a class="padding-05" href="#"><i class="fa-regular fa-square-plus"></i></a>
+            <a class="padding-05" href="posts/create-new-post"><i class="fa-regular fa-square-plus"></i></a>
             <span>Create</span>
         </li>
         <li>
@@ -37,6 +37,17 @@
         <i class="fa-solid fa-bars"></i>
         <span>More</span>
     </div>
-    
+    <% }else{ %>
+        <ul>
+            <li>
+                <a class="padding-05" href="/users/signin"><i class="fa-solid fa-user"></i><span>Sign in</span></a>
+                
+            </li>
+            <li>
+                <a class="padding-05" href="/users/signup"><i class="fa-solid fa-user-plus"></i><span>Sign up</span></a>
+                
+            </li>
+        </ul>
+    <% } %>
 
 </aside>

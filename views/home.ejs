@@ -1,17 +1,13 @@
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css" href="css/chat_box.css">
+<link rel="stylesheet" type="text/css" href="/css/friends.css">
 <div id="home-container">
     <div id="post-container">
-        <section>
-            <h4>Posts</h4>
-            <% if(locals.user){ %>
-            <form action="/posts/create" method="post" id="new-post-form">
-                <textarea name="content" cols="30" rows="3" placeholder="Enter text" required></textarea>
-                <input type="submit" value="Post">
-            </form>
-            <% } %>
-        </section>
-
+        <!-- <section id="content">
+            <div id="post-section">
+            </div>
+        </section> -->
+        
         <section id="post-list-container">
             <ul>
                 <% for (post of postlist){ %>
@@ -19,15 +15,22 @@
                 <% } %>
             </ul>
         </section>
+
+
+        <!-- <section>
+            <% if(locals.user){ %>
+            <form action="/posts/create" method="post" id="new-post-form">
+                <textarea name="content" cols="30" rows="3" placeholder="Enter text" required></textarea>
+                <input type="submit" value="Post">
+            </form>
+            <% } %>
+        </section> -->
+
+        
     </div>
-    <section id="user-friends">
-        <% for (u of all_users){ %>
-            <p>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </p>
-        <% } %>
-    </section>
-    <%- include('_chatbox') -%>
+    
+    
+    <!-- <%- include('_chatbox') -%>  -->
 </div>
 <script src="javascript/home_comments.js"></script>
 <script src="javascript/home_posts.js"></script>

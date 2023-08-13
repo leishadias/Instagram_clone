@@ -1,23 +1,46 @@
-<li id="post-<%= post._id %>">
-    <div>
+<link rel="stylesheet" type="text/css" href="/css/posts.css">
+
+<li id="post-<%= post._id %>" class="post bg-white m-top">
+    <div class="items-align profileDet">
+        <div class="user-det">
+            <div class="user-bg prof-size">
+                <img src="<%= post.user.avatar %>">
+            </div>
+            <span class="padding-05"><p><%= post.user.name %></p></span>
+        </div>
+        <!-- <i class="fa-solid fa-ellipsis color-grey"></i> -->
         <% if (locals.user && locals.user.id == post.user.id){ %>
             <small>
                 <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
             </small>
         <% } %>
-        
-        <p><%= post.content %></p>
-        <p><%= post.user.name %></p>
     </div>
-    <div>
-        <% if(locals.user){ %>
-            <form id="new-<%= post._id %>-comments-form" action="/comments/create" method="POST">
-                    <input type="text" name="content" placeholder="Add comment" required>
-                    <input type="hidden" name="post" value="<%= post._id  %>">
-                    <input type="submit" value="Add comment">
-            </form>
-        <% } %>
+
+    <img src="<%= post.imgpath %>" class="post-img" alt="post1"> 
+    <div class="items-align">
+        <div>
+            <i class="fa-regular fa-heart spacebtwn"></i>
+            <i class="fa-regular fa-comment fa-flip-horizontal spacebtwn"></i>
+            <i class="fa-regular fa-paper-plane spacebtwn"></i>
+        </div>
+        <div>
+            <i class="fa-regular fa-bookmark"></i>
+        </div>
     </div>
+    <div class="caption">
+        <b><%= post.user.name %></b>
+        <span><%= post.caption %></span>
+    </div>
+    <% if(locals.user){ %>
+    <div class="items-align comment">
+        <a><i class="fa-regular fa-face-smile"></i></a>
+        <form id="new-<%= post._id %>-comments-form" action="/comments/create" method="POST" class="items-align w-100">
+            <input type="text" name="content" placeholder="Add a comment" class="comment-box w-100" required>
+            <input type="hidden" name="post" value="<%= post._id  %>">
+            <input type="submit" value="Post" class="post-btn bg-white">
+        </form>
+    </div>
+    <% } %>
     <div id="comment-list-container">
         <ul id="post-comments-<%= post._id %>">
             <% for (comment of post.comments){ %>

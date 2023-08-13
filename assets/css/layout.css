@@ -1,14 +1,16 @@
 body{
-    align-items: center;
     background-color: #fafafa;
     font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 16px;
+    display: flex;
 }
 
 main{
     /* display: flex; */
     /* display: inline-block; */
     margin-left: 200px;
+    width: 98%;
+    padding-right: 15px;
 }
 
 i{

@@ -11,19 +11,18 @@
     
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
     <link rel="stylesheet" type="text/css" href="/css/header.css">
-    <link rel="stylesheet" type="text/css" href="/css/aside.css">
+    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="/css/footer.css">
     <%- style %>
 </head>
 <body>
-    <% if(locals.user){ %>
-        <%- include('_aside'); %>
-    <% } %>
+    <%- include('_navbar'); %>
     <main>
         <section>
             <%- body %>
         </section>
     </main>
+    <%- include('_friends'); %>
     
     <script>
         <% if(flash.success && flash.success.length>0){ %>

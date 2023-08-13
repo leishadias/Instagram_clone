@@ -3,7 +3,8 @@ aside{
     border-right: 1px solid lightgray;
     padding: 0 1rem;
     position: fixed;
-    width:150px;
+    /* width:150px; */
+    flex-basis: 150px;
 }
 
 aside ul{

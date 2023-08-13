@@ -1,0 +1,28 @@
+#new-post-form{
+    text-align: center;
+}
+
+#new-post-form #previewPost{
+
+}
+
+#new-post-form #post-btn{
+    background-color: #0598f2;
+    color: white;
+    border: none;
+    padding: 8px 35px;
+    margin: 18px;
+    border-radius: 15px;
+}
+
+#new-post-form #previewContainer{
+    border: 1px solid lightgrey;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+}
+
+#new-post-form #caption-box{
+    padding: 5px;
+    margin: 2rem;
+}

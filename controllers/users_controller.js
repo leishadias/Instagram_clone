@@ -106,6 +106,7 @@ module.exports.update=async function(req,res){
                 return res.status(401).send('Unauthorised');
             }
         });
+        
     }catch(err){
         req.flash('error', err); //console.log('error', err);
         return res.redirect('back');
