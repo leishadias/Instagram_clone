@@ -1,0 +1,11 @@
+.comment-container{
+    margin:0.5rem;
+}
+
+.delete-comment-button{
+    float: right;
+}
+
+.delete-comment-button i{
+    font-size: 15px;
+}

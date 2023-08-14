@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/css/posts.css">
+<link rel="stylesheet" type="text/css" href="/css/comment.css">
 
 <li id="post-<%= post._id %>" class="post bg-white m-top">
     <div class="items-align profileDet">
@@ -11,7 +12,7 @@
         <!-- <i class="fa-solid fa-ellipsis color-grey"></i> -->
         <% if (locals.user && locals.user.id == post.user.id){ %>
             <small>
-                <a class="delete-post-button" href="/posts/destroy/<%= post.id %>">X</a>
+                <a class="delete-post-button" href="/posts/destroy/<%= post.id %>"><i class="bi bi-trash3"></i></a>
             </small>
         <% } %>
     </div>
@@ -19,9 +20,11 @@
     <img src="<%= post.imgpath %>" class="post-img" alt="post1"> 
     <div class="items-align">
         <div>
-            <i class="fa-regular fa-heart spacebtwn"></i>
-            <i class="fa-regular fa-comment fa-flip-horizontal spacebtwn"></i>
-            <i class="fa-regular fa-paper-plane spacebtwn"></i>
+            <!-- <i class="fa-regular fa-heart spacebtwn"></i> -->
+            <i class="bi bi-heart"></i>
+            <i class="bi bi-chat"></i>
+            <!-- <i class="fa-regular fa-paper-plane spacebtwn"></i> -->
+            <i class="bi bi-send"></i>
         </div>
         <div>
             <i class="fa-regular fa-bookmark"></i>
@@ -33,7 +36,7 @@
     </div>
     <% if(locals.user){ %>
     <div class="items-align comment">
-        <a><i class="fa-regular fa-face-smile"></i></a>
+        <a><i class="bi bi-emoji-smile"></i></a>
         <form id="new-<%= post._id %>-comments-form" action="/comments/create" method="POST" class="items-align w-100">
             <input type="text" name="content" placeholder="Add a comment" class="comment-box w-100" required>
             <input type="hidden" name="post" value="<%= post._id  %>">

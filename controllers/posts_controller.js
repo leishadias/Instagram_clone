@@ -1,5 +1,7 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 const Comment = require('../models/comments');
+const fs = require('fs');
 const path=require('path');
 
 module.exports.create = async function(req, res){
@@ -10,11 +12,17 @@ module.exports.create = async function(req, res){
                 console.log("error in multer", err);
                 return;
             }
+            let user = await User.findById(req.user.id);
+
             let post = await Post.create({
                 imgpath: path.join(Post.imgPath, req.file.filename), 
                 caption: req.body.caption,
                 user: req.user._id
             });
+
+            user.posts.push(post);
+            await user.save();
+            // commentsMailer.newComment(comment);
             
             if (req.xhr){
                 // if we want to populate just the name of the user (we'll not want to send the password in the API), this is how we do it!
@@ -30,7 +38,7 @@ module.exports.create = async function(req, res){
             req.flash('success', 'Post created successfully');
             return res.redirect('/');
         });
-        
+
     }catch(err){
         req.flash('error', err);
         return res.redirect('back');
@@ -42,11 +50,14 @@ module.exports.destroy = async function(req, res){
         const currpost = await Post.findById(req.params.id);
         if (!currpost) {
             req.flash('error', 'Post not found');
-          return res.redirect('back');
+            return res.redirect('back');
         }
         if (currpost.user.toString() == req.user.id){
-            await Post.deleteOne({ _id: req.params.id }); 
-            await Comment.deleteMany({post: req.params.id});
+            fs.unlinkSync(path.join(__dirname,"..",currpost.imgpath)); //delete from folder
+            await Post.deleteOne({ _id: req.params.id }); //delete post
+            await Comment.deleteMany({post: req.params.id}); //delete all comments
+            await User.findByIdAndUpdate(req.user.id, {$pull:{posts:req.params.id}}); //delete post from user
+            
             if(req.xhr){
                 return res.status(200).json({
                     data: {
@@ -60,6 +71,7 @@ module.exports.destroy = async function(req, res){
         return res.redirect('back');
       } catch (err) {
         req.flash('error', err);
+        console.log(err);
         return res.redirect('back');
       }
 };
@@ -67,7 +79,7 @@ module.exports.destroy = async function(req, res){
 module.exports.createPost = async function(req, res){
     try{
         return res.render('create', {
-            title:"home"
+            title:"create"
             });
     }catch(err){
         req.flash('error', err);
