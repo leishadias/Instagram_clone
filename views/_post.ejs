@@ -3,12 +3,14 @@
 
 <li id="post-<%= post._id %>" class="post bg-white m-top">
     <div class="items-align profileDet">
+        <a href="/users/profile/<%= post.user.id %>">
         <div class="user-det">
             <div class="user-bg prof-size">
                 <img src="<%= post.user.avatar %>">
             </div>
             <span class="padding-05"><p><%= post.user.name %></p></span>
         </div>
+        </a>
         <!-- <i class="fa-solid fa-ellipsis color-grey"></i> -->
         <% if (locals.user && locals.user.id == post.user.id){ %>
             <small>
@@ -21,15 +23,31 @@
     <div class="items-align">
         <div>
             <!-- <i class="fa-regular fa-heart spacebtwn"></i> -->
-            <i class="bi bi-heart"></i>
-            <i class="bi bi-chat"></i>
+            <!-- <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle?id=<%=post._id%>&type=Post">
+                <p><%= post.likes.length %> Likes</p><i class="bi bi-heart spacebtwn"></i>
+            </a> -->
+            <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                <% var liked = false %>
+                <% for (var i=0; i<post.likes.length; i++){ %>
+                    <% if(post.likes[0].user == user.id){ %>
+                        <i class="fa-solid fa-heart" style="color: #e00606;"></i>
+                        <% liked=true %>
+                        <% break; %>
+                    <% } %>
+                <% } %>
+                <% if(liked==false){ %>
+                    <i class="fa-regular fa-heart"></i>
+                <% } %>
+            </a>
+            <label for="comment-input"><i class="bi bi-chat spacebtwn"></i></label>
             <!-- <i class="fa-regular fa-paper-plane spacebtwn"></i> -->
-            <i class="bi bi-send"></i>
+            <!-- <i class="bi bi-send spacebtwn"></i> -->
         </div>
         <div>
             <i class="fa-regular fa-bookmark"></i>
         </div>
     </div>
+    <p id="like-count-<%=post.id%>"><%= post.likes.length %> Likes</p>
     <div class="caption">
         <b><%= post.user.name %></b>
         <span><%= post.caption %></span>
@@ -38,7 +56,7 @@
     <div class="items-align comment">
         <a><i class="bi bi-emoji-smile"></i></a>
         <form id="new-<%= post._id %>-comments-form" action="/comments/create" method="POST" class="items-align w-100">
-            <input type="text" name="content" placeholder="Add a comment" class="comment-box w-100" required>
+            <input type="text" name="content" placeholder="Add a comment" class="comment-box w-100" required id="comment-input">
             <input type="hidden" name="post" value="<%= post._id  %>">
             <input type="submit" value="Post" class="post-btn bg-white">
         </form>

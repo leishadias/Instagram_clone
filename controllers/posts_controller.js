@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 const Comment = require('../models/comments');
+const Like = require('../models/like');
 const fs = require('fs');
 const path=require('path');
 
@@ -54,6 +55,8 @@ module.exports.destroy = async function(req, res){
         }
         if (currpost.user.toString() == req.user.id){
             fs.unlinkSync(path.join(__dirname,"..",currpost.imgpath)); //delete from folder
+            await Like.deleteMany({likeable: currpost, onModel: 'Post'});
+            await Like.deleteMany({_id: {$in: currpost.comments}});
             await Post.deleteOne({ _id: req.params.id }); //delete post
             await Comment.deleteMany({post: req.params.id}); //delete all comments
             await User.findByIdAndUpdate(req.user.id, {$pull:{posts:req.params.id}}); //delete post from user

@@ -37,7 +37,7 @@
 }
 
 .spacebtwn{
-    margin-right:0.3rem;
+    margin:0 7px;
 }
 
 .caption{
@@ -45,7 +45,10 @@
 }
 
 .comment-box{
-    border: none;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    outline-color: lightgray;
+    padding: 9px;
 }
 
 .post-btn{
@@ -56,3 +59,4 @@
 .w-100{
     width: 100%;
 }
+
