@@ -9,24 +9,39 @@ module.exports.chatSockets = function(socketServer){
 
     io.sockets.on('connection', function(socket){
         console.log('new connection received', socket.id);
+        
+        // let chatRoom = ''; // E.g. javascript, node,...
+        // let allUsers = []; // All users in current chat room
+        // chatRoom = room;
+        // allUsers.push({ id: socket.id, username, room });
+        // chatRoomUsers = allUsers.filter((user) => user.room === room);
+        // socket.to(room).emit('chatroom_users', chatRoomUsers);
+        // socket.emit('chatroom_users', chatRoomUsers);
 
         socket.on('disconnect', function(){
             console.log('socket disconnected!');
         });
 
         
-        socket.on('join_room', function(data){
+        socket.on('join_room', async function(data){
             console.log('joining request rec.', data);
-
+            room = await Chatroom.findById(data.chatroom);
             socket.join(data.chatroom);
-
-            io.in(data.chatroom).emit('user_joined', data);
+            io.in(data.chatroom).emit("user_joined", data);
         });
 
-        socket.on('send_message', function(data){
+        socket.on('send_message', async function(data){
+            let newMessage = await Chat.create({
+                user: data.user_id,
+                message: data.message,
+            });
+        
+            if (room) {
+                room.messages.push(newMessage);
+                room.save();
+            }
             io.in(data.chatroom).emit('receive_message', data);
         });
 
     });
-
 }

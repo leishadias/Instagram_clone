@@ -1,4 +1,23 @@
 <img src="<%= user.avatar %>" alt="Profile Picture" width="100">
+<%if(!locals.user.following.find(x => x.toString() === profile_user.id) && (locals.user.id != profile_user.id)){%>
+    <a href="/follower/create/?toid=<%=profile_user._id%>">
+        <button type="button" class="btn btn-primary">
+            Make Friend
+        </button>
+    </a>
+<%}%>
+
+
+<%if(locals.user.following.find(x => x.toString() === profile_user.id)){%>
+   
+            <a href="/follower/destroy/?toid=<%=profile_user._id%>">
+                <button type="button" class="btn btn-danger">
+                    Delete Friend
+                </button>
+            </a>
+           
+<%}%>
+
 <% if(profile_user.id == user.id){ %>
     <form action="/users/update/<%= user.id %>" method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>

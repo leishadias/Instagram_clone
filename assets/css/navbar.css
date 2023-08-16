@@ -21,3 +21,17 @@ aside li{
 aside li:hover{
     background-color: lightgray;
 }
+
+.hide{
+    width: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+#logo{
+    text-align: center;
+}
+
+#logo i{
+    width: 10px;
+}

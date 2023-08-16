@@ -1,37 +1,78 @@
 <aside>
-    <div>
-        <img src="images/logo.png" alt="logo" >
-        <!-- <i class="fa-brands fa-instagram"></i> -->
+    <div id="logo">
+        <% if (title == 'chats'){ %>
+            <i class="fa-brands fa-instagram"></i>
+        <% }else{ %>
+            <img src="/images/logo.png" alt="logo" >
+        <% } %> 
     </div>
     <% if(locals.user){ %>
     <ul>
         <li>
-            <a class="padding-05" href="#"><i class="fa-solid fa-house"></i><span>Home</span></a>
-        </li>
-        <li>
-            <a class="padding-05" href="#"><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></a>
-        </li>
-        <li>
-            <a class="padding-05" href="#" id="notif">
-                <i class="fa-brands fa-facebook-messenger"></i>
-                <div id="notification">2</div>
-                <span>Messages</span>
+            <a class="padding-05" href="/"><i class="fa-solid fa-house"></i>
+            <% if (title == 'chats'){ %>
+                <span class="hide">Home</span>
+            <% }else{ %>
+                <span>Home</span>
+            <% } %>
             </a>
         </li>
         <li>
-            <a class="padding-05" href="posts/create-new-post"><i class="fa-regular fa-square-plus"></i><span>Create</span></a>
+            <a class="padding-05" href="#"><i class="fa-solid fa-magnifying-glass"></i>
+            <% if (title == 'chats'){ %>
+                <span class="hide">Search</span>
+            <% }else{ %>
+                <span>Search</span>
+            <% } %>
+        </a>
         </li>
         <li>
-            <a class="padding-05" href="#"><i class="fa-sharp fa-regular fa-compass"></i><span>Explore</span></a>
+            <a class="padding-05" href="/chats/inbox" id="notif">
+                <i class="fa-brands fa-facebook-messenger"></i>
+                <div id="notification">2</div>
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Messages</span>
+                <% }else{ %>
+                    <span>Messages</span>
+                <% } %>
+            </a>
         </li>
         <li>
-            <a class="padding-05" href="#"><i class="fa-regular fa-heart"></i><span>Notifications</span></a>
+            <a class="padding-05" href="posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Create</span>
+                <% }else{ %>
+                    <span>Create</span>
+                <% } %>
+            </a>
+        </li>
+        <li>
+            <a class="padding-05" href="#"><i class="fa-sharp fa-regular fa-compass"></i>
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Explore</span>
+                <% }else{ %>
+                    <span>Explore</span>
+                <% } %>
+            </a>
+        </li>
+        <li>
+            <a class="padding-05" href="#"><i class="fa-regular fa-heart"></i>
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Notifications</span>
+                <% }else{ %>
+                    <span>Notifications</span>
+                <% } %>
+            </a>
             
         </li>
     </ul>
     <div>
         <i class="fa-solid fa-bars"></i>
-        <span>More</span>
+        <% if (title == 'chats'){ %>
+            <span class="hide">More</span>
+        <% }else{ %>
+            <span>More</span>
+        <% } %>
     </div>
     <% }else{ %>
         <ul>

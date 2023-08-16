@@ -11,7 +11,6 @@ class ChatEngine{
 
     }
 
-
     connectionHandler(){
         let self = this;
 
