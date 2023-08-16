@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/css/chat_box.css">
+
+
+<div id="chat-container">
+  <div class="chat-flex-child" id="chat-user-list">
+    <h2>Start chatting now!</h2>
+    <div id="roomlist">
+      <%for(follower of followers.following){%>
+        <div
+        class="chat-list"
+        id="follower-<%=follower._id%>"
+        data-followerId="<%=follower._id%>"
+        >
+        <div class="follower-wrapper">
+          <div class="follower-avatar">
+            <%if(follower.avatar){%>
+              <img src="<%=follower.avatar%>" />
+              
+            <%}%>
+            </div>
+            <div class="follower-name"><%=follower.name%></div>
+          </div>
+        </div>
+        <%}%> 
+        <%if(followers.following.length===0){%>
+          <div class="no-follower">
+            <h2>Follow someone to start chatting now!</h2>
+          </div>
+        <%}%>
+        </div>
+      </div>
+      
+      <div class="chat-flex-child chat-room-display"></div>
+    </div>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="/javascript/chat_engine.js"></script>
+    
+    
+    

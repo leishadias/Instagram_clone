@@ -1,4 +1,6 @@
-
+const Chat = require("../models/chat");
+const Chatroom = require("../models/chatroom");
+var room;
 module.exports.chatSockets = function(socketServer){
     let io = require('socket.io')(socketServer, {
         cors: {
@@ -9,14 +11,6 @@ module.exports.chatSockets = function(socketServer){
 
     io.sockets.on('connection', function(socket){
         console.log('new connection received', socket.id);
-        
-        // let chatRoom = ''; // E.g. javascript, node,...
-        // let allUsers = []; // All users in current chat room
-        // chatRoom = room;
-        // allUsers.push({ id: socket.id, username, room });
-        // chatRoomUsers = allUsers.filter((user) => user.room === room);
-        // socket.to(room).emit('chatroom_users', chatRoomUsers);
-        // socket.emit('chatroom_users', chatRoomUsers);
 
         socket.on('disconnect', function(){
             console.log('socket disconnected!');
@@ -42,6 +36,5 @@ module.exports.chatSockets = function(socketServer){
             }
             io.in(data.chatroom).emit('receive_message', data);
         });
-
     });
 }
