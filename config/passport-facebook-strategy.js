@@ -1,17 +1,19 @@
 const passport = require('passport');
-const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 const crypto = require('crypto');
 const User = require('../models/user');
 
-//tell passport to use new strategy for goolgle login
-passport.use(new googleStrategy({
-        clientID: '705415517906-a00ql2m0vmm7cpoe8qlc4prgjl8219jd.apps.googleusercontent.com',
-        clientSecret: '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',
-        callbackURL: 'http://localhost:8000/users/auth/google/callback'
-    },
+//creating passport strategy
+passport.use(new FacebookStrategy({
+    clientID : "969567850762354",
+    clientSecret : "cb6c28e25be2da60804428a47b13850f",
+    callbackURL :  "http://localhost:8000/users/auth/facebook/callback",
+    profileFields: ['id', 'displayName', 'photos', 'email']
+},
     function(accessToken, refreshToken, profile, done){
-        User.findOne({email: profile.emails[0].value}).exec().then(function(user){
-            // console.log(profile);
+        // console.log("profile",profile);
+        User.findOne({email: profile.id}).exec().then(function(user){
+            
             if (user){
                 //if found, set this user as request.user
                 return done(null, user);
@@ -19,7 +21,7 @@ passport.use(new googleStrategy({
                 //if not found, then create the user and set it as req.user 
                 User.create({
                     name: profile.displayName,
-                    email: profile.emails[0].value,
+                    email: profile.id,
                     password: crypto.randomBytes(20).toString('hex')
                 }).then(function(user){
                     return done(null, user); 
@@ -33,6 +35,7 @@ passport.use(new googleStrategy({
             return;
         });
     }
-));
+   
+))
 
-module.exports=passport;
+module.exports = passport;

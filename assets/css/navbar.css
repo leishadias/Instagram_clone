@@ -35,3 +35,7 @@ aside li:hover{
 #logo i{
     width: 10px;
 }
+
+aside .avatar{
+    width: 35px;
+}

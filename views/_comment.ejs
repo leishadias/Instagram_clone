@@ -1,5 +1,5 @@
 <li id="comment-<%= comment._id %>" class="comment-container">
-    <p>
+    <div>
         <b><%= comment.user.name %></b>
         <span><%= comment.content %></span>
             <small class="comment-interction">
@@ -7,8 +7,8 @@
                 <% if (locals.user && (locals.user.id == comment.user.id || locals.user.id == post.user.id)){ %>
                     <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
                     <% var liked = false %>
-                    <% for (var i=0; i<post.likes.length; i++){ %>
-                        <% if(post.likes[0].user == user.id){ %>
+                    <% for (var i=0; i<comment.likes.length; i++){ %>
+                        <% if(comment.likes[i].user == user.id){ %>
                             <i class="fa-solid fa-heart" style="color: #e00606;"></i>
                             <% liked=true %>
                             <% break; %>
@@ -25,8 +25,9 @@
 
             </small>
         <br>
-        <a href="#" class="comment-reply-btn"><small>Reply</small></a>
-    </p>
+        <hr>
+        <!-- <a href="#" class="comment-reply-btn"><small>Reply</small></a> -->
+    </div>
 </li>
 
 

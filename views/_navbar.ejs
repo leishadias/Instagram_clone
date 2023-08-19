@@ -29,7 +29,6 @@
         <li>
             <a class="padding-05" href="/messages/chats" id="notif">
                 <i class="fa-brands fa-facebook-messenger"></i>
-                <div id="notification">2</div>
                 <% if (title == 'chats'){ %>
                     <span class="hide">Messages</span>
                 <% }else{ %>
@@ -61,6 +60,26 @@
                     <span class="hide">Notifications</span>
                 <% }else{ %>
                     <span>Notifications</span>
+                <% } %>
+            </a>
+            
+        </li>
+        <li>
+            <a class="padding-05" href="/users/profile/<%= user.id%>"><img src="<%=user.avatar%>" alt="avatar" class="avatar">
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Profile</span>
+                <% }else{ %>
+                    <span>Profile</span>
+                <% } %>
+            </a>
+            
+        </li>
+        <li>
+            <a class="padding-05" href="/users/signout">
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Sign out</span>
+                <% }else{ %>
+                    <span>Sign out</span>
                 <% } %>
             </a>
             

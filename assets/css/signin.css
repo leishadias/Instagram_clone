@@ -37,7 +37,9 @@
     margin: 5px 0;
     text-align: center;
 }
-
+ #login-form-container img{
+    padding: 10px;
+ }
 #signin-container .margin{
     padding: 5px 5px;
     margin: 10px 5px;

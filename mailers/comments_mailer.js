@@ -5,7 +5,7 @@ exports.newComment = async function(comment){
     let htmlString = await nodemailer.renderTemplate({comment:comment},'/comments/new_comment.ejs');
     console.log(htmlString);
     nodemailer.transporter.sendMail({
-       from: 'leishadias18@gmail.com',
+       from: 'leid00123456@gmail.com',
        to: comment.user.email,
        subject: "New comment published",
        html: htmlString 

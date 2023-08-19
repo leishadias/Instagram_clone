@@ -1,34 +1,146 @@
-<img src="<%= user.avatar %>" alt="Profile Picture" width="100">
-<%if(!locals.user.following.find(x => x.toString() === profile_user.id) && (locals.user.id != profile_user.id)){%>
-    <a href="/follower/create/?toid=<%=profile_user._id%>">
-        <button type="button" class="btn btn-primary">
-            Make Friend
-        </button>
-    </a>
-<%}%>
+<link rel="stylesheet" type="text/css" href="/css/profile.css">
 
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-3">
+            <img src="<%= profile_user.avatar %>" alt="avatar"  width="100">
+        </div>
+        <div class="col">
+            <div class="container fw-bold">
+                <div class="row p-2">
+                    <div class="col">
+                        <span class="user-name"><%= profile_user.name %></span>
+                    </div>
+                    <div class="col">
+                        <% if(profile_user.id == user.id){ %>
+                            <a class="btn btn-outline-dark" data-bs-toggle="collapse" href="#updateProfileForm" aria-expanded="false" aria-controls="updateProfileForm">
+                                Edit profile
+                            </a>
+                        <% }else if(!locals.user.following.find(x => x.toString() === profile_user.id)){ %>
+                            <% if(locals.user.followers.find(x => x.toString() === profile_user.id)){ %>
+                                <a href="/follower/create/?toid=<%=profile_user._id%>">
+                                    <button type="button" class="btn btn-outline-dark">
+                                        Follow back
+                                    </button>
+                                </a>
+                            <%}else{%>
+                                <a href="/follower/create/?toid=<%=profile_user._id%>">
+                                    <button type="button" class="btn btn-outline-dark">
+                                        Follow
+                                    </button>
+                                </a>
+                            <%}%> 
+                        <% }else if(locals.user.following.find(x => x.toString() === profile_user.id)){ %> 
+                            <a href="/follower/destroy/?toid=<%=profile_user._id%>">
+                                <button type="button" class="btn btn-outline-dark">
+                                    Unfollow
+                                </button>
+                            </a>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col">
+                        <%= profile_user.posts.length %> posts
+                    </div>
+                    <div class="col">
+                        <p data-bs-toggle="modal" data-bs-target="#followers-list">
+                            <%= profile_user.followers.length %> followers
+                        </p>                          
+                        <div class="modal fade" id="followers-list" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Followers</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <% for (u of profile_user.followers){ %>
+                                        <a href="/users/profile/<%= u.id %>">
+                                            <div>
+                                                <img src="<%= u.avatar %>">
+                                                <span><b><%= u.name %></b></span>
+                                            </div>
+                                        </a>
+                                    <% } %>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p data-bs-toggle="modal" data-bs-target="#followers-list">
+                            <%= profile_user.following.length %> following
+                        </p>                          
+                        <div class="modal fade" id="followers-list" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Followers</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <% for (u of profile_user.followers){ %>
+                                        <a href="/users/profile/<%= u.id %>">
+                                            <div>
+                                                <img src="<%= u.avatar %>">
+                                                <span><b><%= u.name %></b></span>
+                                            </div>
+                                        </a>
+                                    <% } %>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col">
+                        <%= profile_user.email %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="collapse" id="updateProfileForm">
+            <form action="/users/update/<%= user.id %>" method="post" enctype="multipart/form-data">
+                <hr>
+                <p class="fs-4 fw-bold">Update user details</p>
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input type="email" readonly name="email" placeholder="Your Email" value="<%= profile_user.email %>" required id="email" class="form-control-plaintext">
+                <br>
+                <label for="name" class="form-label fw-bold">Name</label>
+                <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required id="name" class="form-control">
+                <br>
+                <label for="profile-pic-input" class="form-label fw-bold">Profile picture</label>
+                <br>
+                <img src="<%= profile_user.avatar %>" width="100" height="100" id="previewImage">
+                <br>
+                <br>
+                <input type="file" name="avatar" placeholder="profile picture" id="profile-pic-input" class="form-control"/>
+                <br>
+                <input type="submit" value="Update" class="btn btn-outline-dark">
+            </form>
+        </div>
+    </div>
+    <div class="p-4">
+        <hr>
+    </div>
+    <div>
+        <div id="profile-content-header p-2">
+            <span class="fw-bold"><i class="fa-solid fa-bars"></i> POSTS</span>
+        </div>
+        <div>
+            <section id="post-list-container">
+                <ul>
+                    <% for (post of postlist){ %>
+                        <%- include('_post') -%>
+                    <% } %>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
 
-<%if(locals.user.following.find(x => x.toString() === profile_user.id)){%>
-   
-            <a href="/follower/destroy/?toid=<%=profile_user._id%>">
-                <button type="button" class="btn btn-danger">
-                    Delete Friend
-                </button>
-            </a>
-           
-<%}%>
-
-<% if(profile_user.id == user.id){ %>
-    <form action="/users/update/<%= user.id %>" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email %>" required>
-        <input type="file" name="avatar" placeholder="profile picture" id="profile-pic-input"/>
-        <img src="" width="100" id="previewImage">
-        <input type="submit" value="Update">
-    </form>
-<% }else{ %>
-    <p>Name: <%= profile_user.name %></p>
-    <p>email address is <%= profile_user.email %></p>
-<% } %>
-
-<script src="javascript/profile.js"></script>
+<script src="/javascript/profile.js"></script>

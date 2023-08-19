@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 const AVATAR_PATH = path.join('/uploads/users/avatars');
+const DEFAULT_AVATAR_PATH = path.join(AVATAR_PATH, 'Default_pfp.jpg');
 
 const userSchema = new mongoose.Schema({
     email:{
@@ -31,7 +32,17 @@ const userSchema = new mongoose.Schema({
     following: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    accessToken:
+    {
+        type: String,
+        default: 'abc'
+    },
+    isTokenValid:
+    {
+        type: Boolean,
+        default: false
+    }
 },{
     timestamps:true
 });
@@ -49,6 +60,7 @@ const storage = multer.diskStorage({
 //static methods
 userSchema.statics.uploadedAvatar = multer({storage:storage}).single('avatar');
 userSchema.statics.avatarPath = AVATAR_PATH;
+userSchema.statics.default_avatar = DEFAULT_AVATAR_PATH;
 
 const User = mongoose.model('User', userSchema);
 module.exports=User;

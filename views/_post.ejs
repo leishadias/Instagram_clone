@@ -29,7 +29,7 @@
             <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
                 <% var liked = false %>
                 <% for (var i=0; i<post.likes.length; i++){ %>
-                    <% if(post.likes[0].user == user.id){ %>
+                    <% if(post.likes[i].user == locals.user.id){ %>
                         <i class="fa-solid fa-heart" style="color: #e00606;"></i>
                         <% liked=true %>
                         <% break; %>

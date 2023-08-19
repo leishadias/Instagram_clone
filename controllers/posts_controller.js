@@ -35,7 +35,7 @@ module.exports.create = async function(req, res){
                     message: "Post created!"
                 });
             }
-            
+        
             req.flash('success', 'Post created successfully');
             return res.redirect('/');
         });
@@ -81,9 +81,13 @@ module.exports.destroy = async function(req, res){
 
 module.exports.createPost = async function(req, res){
     try{
-        return res.render('create', {
-            title:"create"
+        if (req.isAuthenticated()){
+            return res.render('create', {
+                title:"create"
             });
+        }else{
+            return res.redirect('/users/signin');
+        }
     }catch(err){
         req.flash('error', err);
         return res.redirect('back');

@@ -1,0 +1,18 @@
+#profile-content-header{
+    border-top:1px solid lightgray;
+    text-align: center;
+}
+
+#profile-content-header span{
+    padding: 0 2px;
+}
+
+#post-list-container ul{
+    list-style: none;
+    padding: 0;
+}
+
+.user-name{
+    font-size: larger;
+    font-weight: 700;
+}

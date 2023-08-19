@@ -36,3 +36,9 @@
 .suggest-desc{
     margin-left: 0.5rem;
 }
+
+.follow-btn{
+    background-color: transparent;
+    border: none;
+    color: rgb(8, 103, 211);
+}

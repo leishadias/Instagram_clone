@@ -8,7 +8,7 @@
         <div class="container-border" class="center-align">
             <img src="/images/logo.png" alt="logo">
             <form action="/users/create-session" method="post" class="center-align">
-                <div class="form-floating mb-3">
+                <div class="form-floating">
                     <input type="email" name="email" required placeholder="Email" class="form-control" id="emailInput">
                     <label for="emailInput">Email address</label>
                 </div>
@@ -16,25 +16,21 @@
                     <input type="password" name="password" required placeholder="Password" class="form-control" id="passwordInput">
                     <label for="passwordInput">Password</label>
                 </div>
-                
-                <br>
-                
-                <br>
                 <input type="submit" value="Log in" class="margin" id="submit-btn">
             </form>
         </div>
         <div class="container-border center-align">
             <a href="/users/auth/google"><i class="fa-brands fa-google"></i> Login with Google</a>
             <br><br>
-            <a href="/users/auth/google"><i class="fa-brands fa-facebook"></i> Login with Facebook</a>
+            <a href="/users/auth/facebook"><i class="fa-brands fa-facebook"></i> Login with Facebook</a>
             <br><br>
-            <a href="/users/auth/google"><i class="fa-brands fa-github"></i> Login with Github</a>
+            <a href="/users/auth/github"><i class="fa-brands fa-github"></i> Login with Github</a>
         </div>
         <div>
             <span>Don't have an account? <a href="/users/signup">Sign Up</a></span>
         </div>
         <p>
-            <a href="/users/forgot_password/">Forgot password?</a>
+            <a href="/users/reset-password">Forgot Password?</a>
         </p>
     </div>
     
