@@ -81,9 +81,11 @@ module.exports.destroy = async function(req, res){
 
 module.exports.createPost = async function(req, res){
     try{
+        let users = await User.find({});
         if (req.isAuthenticated()){
             return res.render('create', {
-                title:"create"
+                title:"create",
+                all_users: users
             });
         }else{
             return res.redirect('/users/signin');

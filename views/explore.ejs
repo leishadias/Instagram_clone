@@ -1,0 +1,15 @@
+<link rel="stylesheet" type="text/css" href="/css/explore.css">
+
+<div id="home-container">
+    <div id="post-container">
+        <section id="post-list-container">
+            <ul>
+                <% for (post of postlist){ %>
+                    <% if(locals.user.id!=post.user._id){ %>
+                        <%- include('_post') -%>
+                    <% } %>
+                <% } %>
+            </ul>
+        </section>
+    </div>
+</div>

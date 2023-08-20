@@ -11,9 +11,11 @@ module.exports.userChats = async function (req, res) {
         "name email avatar"
       );
     }
+    let users = await User.find({});
     return res.render("chats", {
       title: "chats",
-      followers: follower
+      followers: follower,
+      all_users: users
     });
   } catch (err) {
     console.log("ERROR", err);

@@ -40,7 +40,7 @@
             </a>
         </li>
         <li>
-            <a class="padding-05" href="posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
+            <a class="padding-05" href="/posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
                 <% if (title == 'chats'){ %>
                     <span class="hide">Create</span>
                 <% }else{ %>
@@ -49,7 +49,7 @@
             </a>
         </li>
         <li>
-            <a class="padding-05" href="#"><i class="fa-sharp fa-regular fa-compass"></i>
+            <a class="padding-05" href="/explore"><i class="fa-sharp fa-regular fa-compass"></i>
                 <% if (title == 'chats'){ %>
                     <span class="hide">Explore</span>
                 <% }else{ %>
@@ -57,7 +57,7 @@
                 <% } %>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a class="padding-05" href="#"><i class="fa-regular fa-heart"></i>
                 <% if (title == 'chats'){ %>
                     <span class="hide">Notifications</span>
@@ -66,7 +66,7 @@
                 <% } %>
             </a>
             
-        </li>
+        </li> -->
         <li>
             <a class="padding-05" href="/users/profile/<%= user.id%>"><img src="<%=user.avatar%>" alt="avatar" class="avatar">
                 <% if (title == 'chats'){ %>

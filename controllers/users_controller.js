@@ -22,13 +22,15 @@ module.exports.profile = async function(req, res){
                 }
             })
             .populate('likes');
+            let users = await User.find({});
             let user = await User.findById(req.params.id)
             .populate('followers')
             .populate('following');
             return res.render('profile', {
                 title:"profile",
                 postlist: posts,
-                profile_user: user
+                profile_user: user,
+                all_users: users
             });
         }else{
             return res.redirect('/users/signin');
