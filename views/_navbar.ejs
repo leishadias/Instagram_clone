@@ -18,12 +18,15 @@
             </a>
         </li>
         <li>
-            <a class="padding-05" href="#"><i class="fa-solid fa-magnifying-glass"></i>
-            <% if (title == 'chats'){ %>
-                <span class="hide">Search</span>
-            <% }else{ %>
-                <span>Search</span>
-            <% } %>
+            <!-- <a class="padding-05" href="#"> -->
+            <div data-bs-toggle="modal" data-bs-target="#search-list" class="padding-05">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <% if (title == 'chats'){ %>
+                    <span class="hide">Search</span>
+                <% }else{ %>
+                    <span>Search</span>
+                <% } %>
+            </div>  
         </a>
         </li>
         <li>

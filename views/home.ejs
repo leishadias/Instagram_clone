@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="/css/home.css">
 <link rel="stylesheet" type="text/css" href="/css/friends.css">
 <div id="home-container">
     <div id="post-container">
@@ -19,11 +19,35 @@
 
         
     </div>
-    
+                        
+    <div class="modal fade" id="search-list" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Find your friends!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder="Search" id="myInput" onkeyup="filterFunction()">
+                <div class="dropdown">
+                    <% for (u of all_users){ %>
+                        <a href="/users/profile/<%= u.id %>">
+                            <div class="profile-det">
+                                <img src="<%= u.avatar %>" width="20px">
+                                <span><b><%= u.name %></b></span>
+                            </div>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
     
 </div>
 <script src="javascript/home_comments.js"></script>
 <script src="javascript/home_posts.js"></script>
+<script src="/javascript/home.js"></script>
 
 <script src="/javascript/toggle_likes.js"></script>
 <script>
