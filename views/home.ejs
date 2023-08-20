@@ -10,7 +10,9 @@
         <section id="post-list-container">
             <ul>
                 <% for (post of postlist){ %>
-                    <%- include('_post') -%>
+                    <% if(locals.user.following.includes(post.user._id)){ %>
+                        <%- include('_post') -%>
+                    <% } %>
                 <% } %>
             </ul>
         </section>

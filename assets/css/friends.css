@@ -38,7 +38,8 @@
 }
 
 .follow-btn{
-    background-color: transparent;
-    border: none;
+    /* background-color: transparent; */
+    /* border: none; */
     color: rgb(8, 103, 211);
+    text-decoration: none;
 }

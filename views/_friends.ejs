@@ -15,7 +15,7 @@
                                 <small><span class="col-grey">Follows You</span></small>
                             </div>
                         </div>
-                        <button class="follow-btn">Follow back</button>
+                        <a class="follow-btn" href="/follower/create/?toid=<%=u._id%>">Follow back</a>
                     </a>
                 <% }else if(!locals.user.following.includes(u.id)){ %>
                     <a href="/users/profile/<%= u.id %>">
@@ -26,7 +26,7 @@
                                 <br/>
                             </div>
                         </div>
-                        <button class="follow-btn">Follow</button>
+                        <a class="follow-btn" href="/follower/create/?toid=<%=u._id%>">Follow</a>
                     </a>
                 <% } %>
             <% } %>
