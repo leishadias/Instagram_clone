@@ -4,17 +4,32 @@
     </div>
     <div id="user-friends" class="suggest-container m-top">
         <% for (u of all_users){ %>
-        <a href="/users/profile/<%= u.id %>">
-            <div class="profile-det">
-                <img src="<%= u.avatar %>" class="suggest-pic">
-                <div class="suggest-desc">
-                    <span><b><%= u.name %></b></span>
-                    <br/>
-                    <small><span class="col-grey">Follows You</span></small>
-                </div>
-            </div>
-            <button class="follow-btn">Follow</button>
-        </a>
+            <% if(u.id!=user.id){ %>
+                <% if(locals.user.followers.includes(u.id) && !locals.user.following.includes(u.id)) { %>
+                    <a href="/users/profile/<%= u.id %>">
+                        <div class="profile-det">
+                            <img src="<%= u.avatar %>" class="suggest-pic">
+                            <div class="suggest-desc">
+                                <span><b><%= u.name %></b></span>
+                                <br/>
+                                <small><span class="col-grey">Follows You</span></small>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Follow back</button>
+                    </a>
+                <% }else if(!locals.user.following.includes(u.id)){ %>
+                    <a href="/users/profile/<%= u.id %>">
+                        <div class="profile-det">
+                            <img src="<%= u.avatar %>" class="suggest-pic">
+                            <div class="suggest-desc">
+                                <span><b><%= u.name %></b></span>
+                                <br/>
+                            </div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </a>
+                <% } %>
+            <% } %>
         <% } %>
     </div>
 </div>
