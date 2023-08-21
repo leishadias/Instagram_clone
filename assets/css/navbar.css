@@ -1,24 +1,24 @@
-aside{
-    height: 98vh;
+nav{
+    min-height: 98vh;
     border-right: 1px solid lightgray;
-    padding: 0 1rem;
+    padding:  15px;
     position: fixed;
-    /* width:150px; */
-    flex-basis: 150px;
+    /* width: 150px; */
+    flex-basis: 190px;
 }
 
-aside ul{
+nav ul{
     list-style: none;
-    padding: 0;
+    padding: 5px 0;
     /* margin: 0; */
 }  
 
-aside li{
+nav #nav-items>li{
     padding: 1rem 3px;
     border-radius: 15px;
 }
 
-aside li:hover{
+nav #nav-items>li:hover{
     background-color: lightgray;
 }
 
@@ -36,6 +36,10 @@ aside li:hover{
     width: 10px;
 }
 
-aside .avatar{
+nav .avatar{
     width: 35px;
+}
+
+nav .dropdown-item{
+
 }

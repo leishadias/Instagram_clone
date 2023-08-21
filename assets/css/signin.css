@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
 }
 
 #loginimg{
@@ -21,6 +22,7 @@
     align-items: center;
     border: 1px solid lightgray;
     width: 40%;
+    background-color: aliceblue;
 }
 
 #signin-container #login-form-container #submit-btn{
@@ -48,4 +50,21 @@
 
 #signin-container .center-align{
     text-align: center;
+}
+
+main{
+    margin-left: 0;
+}
+
+/*screen resizing*/
+@media only screen and (max-width: 800px) {
+    #loginimg{
+        width: 0%;
+    }
+    #signin-container #login-img-container{
+        width: 0%;
+    }
+    #signin-container #login-form-container{
+        width: 100%;
+    }
 }

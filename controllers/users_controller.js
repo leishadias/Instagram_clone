@@ -102,11 +102,11 @@ module.exports.destroySession=function(req, res){
     try{
         req.logout(function(err) {
             if (err) { return next(err); }
-            req.flash('success', 'log out success');
-            return res.redirect('/');
-          });
+        });
+        req.flash('success', 'Logged Out Successfully');
+        return res.redirect('/users/signin');
     }catch(err){
-        req.flash('error', err); //console.log('error', err);
+        req.flash('error', err); 
         return res.redirect('back');
     }
 }
@@ -216,18 +216,9 @@ module.exports.resetPassMail = async function(req, res)
                 user.save();
             }
             userMailer.resetPassword(user);
-            // let job = queue.create('user-emails', user).save(function(err)
-            // {
-            //     if(err)
-            //     {
-            //         console.log('Error in sending to the queue', err);
-            //         return;
-            //     }
-            //     // console.log('Job enqueued', job.id);
-            // });
-
-            req.flash('success', 'Password reset link sent. Please check your mail');
-            return res.redirect('/');
+            // console.log("link sent");
+            req.flash('success', 'Password reset link sent to mail');
+            return res.redirect('/users/signin');
         }else{
             console.log('User not found. Try again!');
             req.flash('error', 'User not found. Try again!');

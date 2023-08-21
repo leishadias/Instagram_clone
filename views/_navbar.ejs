@@ -1,4 +1,4 @@
-<aside>
+<div>
     <div id="logo">
         <% if (title == 'chats'){ %>
             <i class="fa-brands fa-instagram"></i>
@@ -7,7 +7,7 @@
         <% } %> 
     </div>
     <% if(locals.user){ %>
-    <ul>
+    <ul id="nav-items">
         <li>
             <a class="padding-05" href="/"><i class="fa-solid fa-house"></i>
             <% if (title == 'chats'){ %>
@@ -78,24 +78,29 @@
             
         </li>
         <li>
-            <a class="padding-05" href="/users/signout">
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Sign out</span>
-                <% }else{ %>
-                    <span>Sign out</span>
-                <% } %>
-            </a>
             
+            <div class="padding-05 dropend">
+                <div data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                    <% if (title == 'chats'){ %>
+                        <span class="hide">More</span>
+                    <% }else{ %>
+                        <span>More</span>
+                    <% } %>
+                    </div>
+                <ul class="dropdown-menu">
+                  <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
+                  <li><a class="dropdown-item" href="/users/signout">
+                    <% if (title == 'chats'){ %>
+                        <span class="hide">Sign out</span>
+                    <% }else{ %>
+                        <span>Sign out</span>
+                    <% } %>
+                </a></li>
+                </ul>
+            </div>
         </li>
     </ul>
-    <div>
-        <i class="fa-solid fa-bars"></i>
-        <% if (title == 'chats'){ %>
-            <span class="hide">More</span>
-        <% }else{ %>
-            <span>More</span>
-        <% } %>
-    </div>
     <% }else{ %>
         <ul>
             <li>
@@ -109,4 +114,4 @@
         </ul>
     <% } %>
 
-</aside>
+    </div>

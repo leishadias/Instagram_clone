@@ -9,17 +9,27 @@
         
         <section id="post-list-container">
             <ul>
+                <% var postcount =0 %>
                 <% for (post of postlist){ %>
-                    <% if(locals.user.following.includes(post.user._id)){ %>
+                    <% if(locals.user.following.includes(post.user._id) || post.user._id==user.id){ %>
+                        <% postcount++ %>
                         <%- include('_post') -%>
                     <% } %>
+                <% } %>
+                <% if (postcount==0){ %>
+                    <div id="no-posts">
+                        <p>Uh oh! no posts to show. Follow someone right now to see what they're posting!</p>
+                    </div>
                 <% } %>
             </ul>
         </section>
     </div>
+    <% if (title == 'home'){ %>
+        <%- include('_friends'); %>
+    <% } %>
 </div>
 <script src="javascript/home_comments.js"></script>
-<script src="javascript/home_posts.js"></script>
+<!-- <script src="javascript/home_posts.js"></script> -->
 
 <script src="/javascript/toggle_likes.js"></script>
 <script>

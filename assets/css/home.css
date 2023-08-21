@@ -1,4 +1,20 @@
+#home-container{
+    display: flex;
+    width: 100%;
+}
+
+#post-container{
+    width:85%;
+    padding: 10px;
+}
+
 #post-list-container ul{
     list-style: none;
     padding: 0;
+}
+
+#no-posts{
+    font-size: larger;
+    text-align: center;
+    margin-top: 5rem;
 }
