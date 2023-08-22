@@ -22,10 +22,14 @@ nav #nav-items>li:hover{
     background-color: lightgray;
 }
 
-.hide{
+.temporary-highlight{
+    background-color: lightgray;
+}
+
+.hidden{
     width: 0;
     overflow: hidden;
-    display: inline-block;
+    visibility: collapse;
 }
 
 #logo{
@@ -33,13 +37,36 @@ nav #nav-items>li:hover{
 }
 
 #logo i{
-    width: 10px;
+    /* width: 10px; */
 }
 
 nav .avatar{
     width: 35px;
 }
 
-nav .dropdown-item{
 
+
+/*screen resizing*/
+@media only screen and (max-width: 1200px) {
+    .to-hide{
+        width: 0;
+        visibility: hidden;
+        padding: 0;
+        overflow: hidden;
+    }
+    .hidden{
+        width: auto;
+        visibility: inherit;
+        z-index: 1;
+        /* overflow: hidden; */
+        /* display: inline-block; */
+    }
+    nav{
+        /* flex-basis: 50px; */
+        width: 100px;
+    }
+    nav #nav-items>li{
+        padding: 1rem 3px 0;
+        /* border-radius: 15px; */
+    }
 }

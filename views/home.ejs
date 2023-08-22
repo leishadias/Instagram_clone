@@ -1,7 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <link rel="stylesheet" type="text/css" href="/css/friends.css">
-<div id="home-container">
-    <div id="post-container">
+<div id="home-container container">
+    <div class="row">
+    <div id="post-container" class="col-lg-10 col-12">
         <!-- <section id="content">
             <div id="post-section">
             </div>
@@ -27,6 +28,7 @@
     <% if (title == 'home'){ %>
         <%- include('_friends'); %>
     <% } %>
+</div>
 </div>
 <script src="javascript/home_comments.js"></script>
 <!-- <script src="javascript/home_posts.js"></script> -->

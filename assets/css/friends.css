@@ -42,6 +42,15 @@
 .follow-btn{
     /* background-color: transparent; */
     /* border: none; */
-    color: rgb(8, 103, 211);
-    text-decoration: none;
+    color: blue;
+}
+
+/*screen resizing*/
+@media only screen and (max-width: 1000px) {
+    #friends-list-container{
+        width: 0;
+        padding: 0;
+        margin: 0;
+        visibility: hidden;
+    }
 }

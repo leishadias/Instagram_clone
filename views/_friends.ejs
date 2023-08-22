@@ -1,8 +1,8 @@
-<div id="friends-list-container" class="m-top">
+<div id="friends-list-container" class="m-top col-md col-0">
     <div class="m-top m-bottom suggest-head">
         <span class="col-grey">Suggestions For You</span>
     </div>
-    <div id="user-friends" class="suggest-container m-top">
+    <div id="user-friends" class="suggest-container m-top" >
         <% for (u of all_users){ %>
             <% if(u.id!=user.id){ %>
                 <% if(locals.user.followers.includes(u.id) && !locals.user.following.includes(u.id)) { %>

@@ -105,6 +105,7 @@ function createArea(chatRoom, follower, user) {
   return `
   <div class="user-chat-box">
       <div class="chat-header">
+      <div class="back-button"><i class="fa-solid fa-arrow-left"></i></div>
         <div class="header-avatar">
         ${
           follower.avatar
@@ -185,7 +186,7 @@ $(".chat-list").each(function () {
 
         connectRoom();
         changeScreen();
-        // arrow();
+        arrow();
         tempClass(followerId);
       },
       error: function (error) {
@@ -195,15 +196,15 @@ $(".chat-list").each(function () {
   });
 });
 
-// function arrow() {
-//   $(".back-button").click(() => {
-//     $(".chat-room-display").css("display", "none");
-//     $("#chat-user-list").css({ display: "block", width: "100%" });
-//   });
-// }
+function arrow() {
+  $(".back-button").click(() => {
+    $(".chat-room-display").css("display", "none");
+    $("#chat-user-list").css({ display: "block", width: "100%" });
+  });
+}
 
 function changeScreen() {
-  if (window.innerWidth <= 430) {
+  if (window.innerWidth <= 800) {
     $(".chat-room-display").css({ display: "block", width: "100%" });
     $("#chat-user-list").css("display", "none");
   }

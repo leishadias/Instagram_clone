@@ -2,8 +2,8 @@
 
 <div class="container pt-4">
     <div class="row">
-        <div class="col-3">
-            <img src="<%= profile_user.avatar %>" alt="avatar"  width="100">
+        <div class="col-md-2">
+            <img src="<%= profile_user.avatar %>" alt="avatar" id="profile-avatar">
         </div>
         <div class="col">
             <div class="container fw-bold">
@@ -13,28 +13,28 @@
                     </div>
                     <div class="col">
                         <% if(profile_user.id == user.id){ %>
-                            <a class="btn btn-outline-dark" data-bs-toggle="collapse" href="#updateProfileForm" aria-expanded="false" aria-controls="updateProfileForm">
+                            <a class="btn btn-outline-dark float-right" data-bs-toggle="collapse" href="#updateProfileForm" aria-expanded="false" aria-controls="updateProfileForm">
                                 Edit profile
                             </a>
                         <% }else if(!locals.user.following.find(x => x.toString() === profile_user.id)){ %>
                             <% if(locals.user.followers.find(x => x.toString() === profile_user.id)){ %>
-                                <a href="/follower/create/?toid=<%=profile_user._id%>">
-                                    <button type="button" class="btn btn-outline-dark">
+                                <a class="btn btn-outline-dark float-right" href="/follower/create/?toid=<%=profile_user._id%>">
+                                    <!-- <button type="button" class="btn btn-outline-dark"> -->
                                         Follow back
-                                    </button>
+                                    <!-- </button> -->
                                 </a>
                             <%}else{%>
-                                <a href="/follower/create/?toid=<%=profile_user._id%>">
-                                    <button type="button" class="btn btn-outline-dark">
+                                <a class="btn btn-outline-dark float-right" href="/follower/create/?toid=<%=profile_user._id%>">
+                                    <!-- <button type="button" class="btn btn-outline-dark"> -->
                                         Follow
-                                    </button>
+                                    <!-- </button> -->
                                 </a>
                             <%}%> 
                         <% }else if(locals.user.following.find(x => x.toString() === profile_user.id)){ %> 
-                            <a href="/follower/destroy/?toid=<%=profile_user._id%>">
-                                <button type="button" class="btn btn-outline-dark">
+                            <a class="btn btn-outline-dark float-right" href="/follower/destroy/?toid=<%=profile_user._id%>">
+                                <!-- <button type="button" class="btn btn-outline-dark"> -->
                                     Unfollow
-                                </button>
+                                <!-- </button> -->
                             </a>
                         <%}%>
                     </div>

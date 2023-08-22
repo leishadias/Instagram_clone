@@ -1,14 +1,23 @@
 .comment-container{
     margin:0.5rem;
 }
+.comment-content{
+    display: flex;
+    justify-content: space-between;
+}
 
 .delete-comment-button{
     margin: 6px;
 }
 
+.comment-interction{
+    display: flex;
+    flex-direction: row;    
+}
+
 .comment-interction i{
     font-size: 15px;
-    float: right;
+    /* float: right; */
     margin: 0 5px;
 }
 
@@ -19,5 +28,5 @@
 }
 
 .likes-count{
-    float: right;
+    /* float: right; */
 }

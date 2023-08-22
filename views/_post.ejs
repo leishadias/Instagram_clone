@@ -56,18 +56,18 @@
             <!-- <i class="fa-regular fa-paper-plane spacebtwn"></i> -->
             <!-- <i class="bi bi-send spacebtwn"></i> -->
         </div>
-        <div>
+        <!-- <div>
             <i class="fa-regular fa-bookmark"></i>
-        </div>
+        </div> -->
     </div>
-    <p id="like-count-<%=post.id%>"><%= post.likes.length %> Likes</p>
+    <p id="like-count-<%=post.id%>" class="px-2"><%= post.likes.length %> Likes</p>
     <div class="caption">
         <b><%= post.user.name %></b>
         <span><%= post.caption %></span>
     </div>
     <% if(locals.user){ %>
     <div class="items-align comment">
-        <a><i class="bi bi-emoji-smile"></i></a>
+        <label for="comment-input"><i class="bi bi-emoji-smile"></i></label>
         <form id="new-<%= post._id %>-comments-form" action="/comments/create" method="POST" class="items-align w-100">
             <input type="text" name="content" placeholder="Add a comment" class="comment-box w-100" required id="comment-input">
             <input type="hidden" name="post" value="<%= post._id  %>">

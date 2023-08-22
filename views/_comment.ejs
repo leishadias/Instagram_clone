@@ -1,7 +1,10 @@
 <li id="comment-<%= comment._id %>" class="comment-container">
-    <div>
-        <b><%= comment.user.name %></b>
-        <span><%= comment.content %></span>
+    <div class="comment-content">
+        <div>
+            <b><%= comment.user.name %></b>
+            <span><%= comment.content %></span>
+        </div>
+        <div>
             <small class="comment-interction">
                 <!-- <i class="bi bi-heart spacebtwn"></i> -->
                 <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
@@ -27,23 +30,25 @@
                         <ul class="dropdown-menu">
                             <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
                             <li>
-                                <a class="delete-post-button dropdown-item" href="/comments/destroy/<%= comment.id %>">
+                                <a class="delete-comment-button dropdown-item" href="/comments/destroy/<%= comment.id %>">
                                     <i class="bi bi-trash3"></i> Delete
                                 </a>
                             </li>
                         </ul>
                     </div>
                 <% } %>
-                <br>
-                <span id="like-count-<%=comment._id%>" class="likes-count"><%= comment.likes.length %> Likes</span>
+                <!-- <br> -->
+                
 
             </small>
-        <br>
-        <hr>
+            <span id="like-count-<%=comment._id%>" class="likes-count"><%= comment.likes.length %> Likes</span>
+        </div>
+        <!-- <br> -->
+        
         <!-- <a href="#" class="comment-reply-btn"><small>Reply</small></a> -->
     </div>
+    <hr>
 </li>
-
 
 <!-- <div class="caption">
     <b><%= post.user.name %></b>

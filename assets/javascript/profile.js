@@ -11,4 +11,5 @@
             previewImg.src = URL.createObjectURL(file);
         }
     });
+
 }

@@ -1,60 +1,39 @@
 <div>
     <div id="logo">
-        <% if (title == 'chats'){ %>
-            <i class="fa-brands fa-instagram"></i>
-        <% }else{ %>
-            <img src="/images/logo.png" alt="logo" >
-        <% } %> 
+            <i class="fa-brands fa-instagram hidden"></i>
+            <img src="/images/logo.png" alt="logo" class="to-hide">
     </div>
     <% if(locals.user){ %>
     <ul id="nav-items">
         <li>
             <a class="padding-05" href="/"><i class="fa-solid fa-house"></i>
-            <% if (title == 'chats'){ %>
-                <span class="hide">Home</span>
-            <% }else{ %>
-                <span>Home</span>
-            <% } %>
+                <span class="to-hide">Home</span>
             </a>
         </li>
-        <li>
-            <!-- <a class="padding-05" href="#"> -->
-            <div data-bs-toggle="modal" data-bs-target="#search-list" class="padding-05">
+        <li id="searchBtnList">
+            <a href="#">
+            <div id="search-btn" data-bs-toggle="modal" data-bs-target="#searchlist" class="padding-05">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Search</span>
-                <% }else{ %>
-                    <span>Search</span>
-                <% } %>
-            </div>  
+
+                    <span class="to-hide">Search</span>
+            </div>   
         </a>
         </li>
         <li>
             <a class="padding-05" href="/messages/chats" id="notif">
                 <i class="fa-brands fa-facebook-messenger"></i>
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Messages</span>
-                <% }else{ %>
-                    <span>Messages</span>
-                <% } %>
+                    <span class="to-hide">Messages</span>
             </a>
         </li>
         <li>
             <a class="padding-05" href="/posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Create</span>
-                <% }else{ %>
-                    <span>Create</span>
-                <% } %>
+                    <span class="to-hide">Create</span>
             </a>
         </li>
         <li>
             <a class="padding-05" href="/explore"><i class="fa-sharp fa-regular fa-compass"></i>
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Explore</span>
-                <% }else{ %>
-                    <span>Explore</span>
-                <% } %>
+                    <span class="to-hide">Explore</span>
+
             </a>
         </li>
         <!-- <li>
@@ -69,46 +48,38 @@
         </li> -->
         <li>
             <a class="padding-05" href="/users/profile/<%= user.id%>"><img src="<%=user.avatar%>" alt="avatar" class="avatar">
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Profile</span>
-                <% }else{ %>
-                    <span>Profile</span>
-                <% } %>
+                    <span class="to-hide">Profile</span>
+
             </a>
             
         </li>
         <li>
-            
+            <!-- <a href="#"> -->
             <div class="padding-05 dropend">
                 <div data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-bars"></i>
-                    <% if (title == 'chats'){ %>
-                        <span class="hide">More</span>
-                    <% }else{ %>
-                        <span>More</span>
-                    <% } %>
-                    </div>
+                        <span class="to-hide">More</span>
+
+                </div>
                 <ul class="dropdown-menu">
                   <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
                   <li><a class="dropdown-item" href="/users/signout">
-                    <% if (title == 'chats'){ %>
-                        <span class="hide">Sign out</span>
-                    <% }else{ %>
                         <span>Sign out</span>
-                    <% } %>
                 </a></li>
                 </ul>
             </div>
+            <!-- </a> -->
         </li>
     </ul>
+
     <% }else{ %>
         <ul>
             <li>
-                <a class="padding-05" href="/users/signin"><i class="fa-solid fa-user"></i><span>Sign in</span></a>
+                <a class="padding-05" href="/users/signin"><i class="fa-solid fa-user"></i><span class="to-hide">Sign in</span></a>
                 
             </li>
             <li>
-                <a class="padding-05" href="/users/signup"><i class="fa-solid fa-user-plus"></i><span>Sign up</span></a>
+                <a class="padding-05" href="/users/signup"><i class="fa-solid fa-user-plus"></i><span class="to-hide">Sign up</span></a>
                 
             </li>
         </ul>

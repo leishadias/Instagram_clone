@@ -46,9 +46,9 @@ app.use(
       secret: 'bu9BthnFajqZjoYdeXv6v89H7CCPpm5r',
       saveUninitialized: false,
       resave: false,
-      cookie: {
-        maxAge: 1000 * 60 * 100,
-      },
+      // cookie: {
+      //   maxAge: 1000 * 60 * 100,
+      // },
       store: new MongoStore({
         mongoUrl: 'mongodb://127.0.0.1:27017/instagram_dev',
         mongooseConnection: db,

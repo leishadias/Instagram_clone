@@ -26,3 +26,14 @@
     padding: 5px;
     margin: 2rem;
 }
+
+/*screen resizing*/
+@media only screen and (max-width: 600px) {
+    #new-post-form #previewContainer{
+        width: 200px;
+        height: 200px;
+    }
+    #new-post-form #caption-box{
+        width: 200px;
+    }
+}

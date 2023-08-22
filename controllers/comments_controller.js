@@ -58,6 +58,7 @@ module.exports.destroy = async function(req, res){
               },
               message: "comment deleted"
           });
+          
         } 
         req.flash('success', 'Comment deleted successfully');
       } 

@@ -21,12 +21,15 @@
     <nav>
         <% if(locals.user){ %>
             <%- include('_navbar'); %>
-            <%- include('_search'); %>
         <% } %>
     </nav>
     <main>
         <section>
             <%- body %>
+            <% if(locals.user){ %>
+                <%- include('_search'); %>
+            <% } %>
+            
         </section>
     </main>
     
@@ -55,6 +58,7 @@
     <!-- <script type="text/javascript" src="javascript/script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="/javascript/search.js"></script>
+    <script src="/javascript/navbar.js"></script>
     <%- script %>
 
 </body>
