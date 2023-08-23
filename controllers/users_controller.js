@@ -136,6 +136,7 @@ module.exports.update=async function(req,res){
                     }
                     user.avatar=path.join(User.avatarPath, req.file.filename);
                 }
+                user.about=req.body.about;
                 user.save();
                 return res.redirect('back');
             }else{

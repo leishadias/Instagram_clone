@@ -5,12 +5,12 @@
     </div>
     <% if(locals.user){ %>
     <ul id="nav-items">
-        <li>
+        <li title="Home">
             <a class="padding-05" href="/"><i class="fa-solid fa-house"></i>
                 <span class="to-hide">Home</span>
             </a>
         </li>
-        <li id="searchBtnList">
+        <li id="searchBtnList" title="Search">
             <a href="#">
             <div id="search-btn" data-bs-toggle="modal" data-bs-target="#searchlist" class="padding-05">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -19,18 +19,18 @@
             </div>   
         </a>
         </li>
-        <li>
+        <li title="Messages">
             <a class="padding-05" href="/messages/chats" id="notif">
                 <i class="fa-brands fa-facebook-messenger"></i>
                     <span class="to-hide">Messages</span>
             </a>
         </li>
-        <li>
+        <li title="Create">
             <a class="padding-05" href="/posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
                     <span class="to-hide">Create</span>
             </a>
         </li>
-        <li>
+        <li title="Explore">
             <a class="padding-05" href="/explore"><i class="fa-sharp fa-regular fa-compass"></i>
                     <span class="to-hide">Explore</span>
 
@@ -46,14 +46,14 @@
             </a>
             
         </li> -->
-        <li>
+        <li title="Profile">
             <a class="padding-05" href="/users/profile/<%= user.id%>"><img src="<%=user.avatar%>" alt="avatar" class="avatar">
                     <span class="to-hide">Profile</span>
 
             </a>
             
         </li>
-        <li>
+        <li title="More">
             <!-- <a href="#"> -->
             <div class="padding-05 dropend">
                 <div data-bs-toggle="dropdown" aria-expanded="false">

@@ -98,6 +98,11 @@
                 </div>
                 <div class="row p-2">
                     <div class="col">
+                        <%= profile_user.about %>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col">
                         <%= profile_user.email %>
                     </div>
                 </div>
@@ -114,6 +119,9 @@
                 <br>
                 <label for="name" class="form-label fw-bold">Name</label>
                 <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required id="name" class="form-control">
+                <br>
+                <label for="about" class="form-label fw-bold">Bio</label>
+                <input type="text" name="about" placeholder="Tell something about yourself" value="<%= profile_user.about %>" required id="about" class="form-control" maxlength="50" size="50">
                 <br>
                 <label for="profile-pic-input" class="form-label fw-bold">Profile picture</label>
                 <br>
