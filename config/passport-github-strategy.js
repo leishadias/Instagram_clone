@@ -3,6 +3,7 @@ var GitHubStrategy = require('passport-github2').Strategy;
 const crypto = require('crypto');
 const User = require('../models/user');
 // const env = require('./environment');
+const path = require('path');
 
 
 //creating passport strategy
@@ -23,7 +24,8 @@ function(accessToken, refreshToken, profile, done){
             User.create({
                 name: profile.username,
                 email: profile.id,
-                password: crypto.randomBytes(20).toString('hex')
+                password: crypto.randomBytes(20).toString('hex'),
+                avatar: path.join(User.default_avatar)
             }).then(function(user){
                 return done(null, user); 
             }).catch((err)=>{

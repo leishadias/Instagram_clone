@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="/css/signin.css">
 
+<!--sign in page-->
 <div id="signin-container">
     <div id="login-img-container">
         <img src="/images/signin.jpg" alt="Instagram" id="loginimg">
@@ -7,6 +8,7 @@
     <div id="login-form-container">
         <div class="container-border" class="center-align">
             <img src="/images/logo.png" alt="logo">
+            <!--sign up form-->
             <form action="/users/create-session" method="post" class="center-align">
                 <div class="form-floating my-2">
                     <input type="email" name="email" required placeholder="Email" class="form-control" id="emailInput">
@@ -19,6 +21,8 @@
                 <input type="submit" value="Log in" class="margin" id="submit-btn">
             </form>
         </div>
+
+        <!--Social logins-->
         <div class="container-border center-align">
             <a href="/users/auth/google"><i class="fa-brands fa-google"></i> Login with Google</a>
             <br><br>
@@ -26,6 +30,7 @@
             <br><br>
             <a href="/users/auth/github"><i class="fa-brands fa-github"></i> Login with Github</a>
         </div>
+
         <div>
             <a href="/users/signup">Don't have an account? Sign Up</a>
         </div>

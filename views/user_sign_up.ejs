@@ -1,49 +1,45 @@
 <link rel="stylesheet" href="/css/signup.css">
-    <div id="signup-container">
-        <div class="container-border" class="center-align">
-            <img src="/images/logo.png" alt="logo">
-            <!-- <form action="/users/create" method="post" class="center-align">
-                <input type="text" name="name" required placeholder="Name" class="margin">
-                <br>
-                <input type="email" name="email" required placeholder="Email" class="margin">
-                <br>
-                <input type="password" name="password" required placeholder="Password" class="margin">
-                <br>
-                <input type="password" name="confirmPassword" required placeholder="Confirm password" class="margin">
-                <br>
-                <input type="submit" value="Sign up" class="margin" id="submit-btn">
-            </form> -->
 
-            <form action="/users/create" method="post" class="center-align">
-                <div class="form-floating">
-                    <input type="text" name="name" required placeholder="Name" class="form-control my-2" id="nameInput">
-                    <label for="nameInput">Name</label>
-                </div>
-                <div class="form-floating">
-                    <input type="email" name="email" required placeholder="Email" class="form-control my-2" id="emailInput">
-                    <label for="emailInput">Email</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" name="password" required placeholder="Password" class="form-control my-2" id="passwordInput">
-                    <label for="passwordInput">Password</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" name="confirmPassword" required placeholder="Confirm password" class="form-control my-2" id="confirmPasswordInput">
-                    <label for="confirmPasswordInput">Confirm password</label>
-                </div>
-                <input type="submit" value="Sign up" class="margin" id="submit-btn">
-            </form>
-        </div>
-        <p id="divider"><span>or</span></p>
-        <div class="container-border center-align">
-            <a href="/users/auth/google"><i class="fa-brands fa-google"></i> Sign up with Google</a>
-            <br><br>
-            <a href="/users/auth/facebook"><i class="fa-brands fa-facebook"></i> Sign up with Facebook</a>
-            <br><br>
-            <a href="/users/auth/github"><i class="fa-brands fa-github"></i> Sign up with Github</a>
-        </div>
-        <div class="my-4">
-            <a href="/users/signin">Already have an account? Sign in</a>
-        </div>
-        <p><small>By Signing up you agree to our Terms, Privacy Policy and Cookie Policy.</small></p>
+<!--sign up page-->
+<div id="signup-container">
+    <div class="container-border" class="center-align">
+        <img src="/images/logo.png" alt="logo">
+
+        <!--sign up form-->
+        <form action="/users/create" method="post" class="center-align">
+            <div class="form-floating">
+                <input type="text" name="name" required placeholder="Name" class="form-control my-2" id="nameInput">
+                <label for="nameInput">Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" name="email" required placeholder="Email" class="form-control my-2" id="emailInput" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+                <label for="emailInput">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" required placeholder="Password" class="form-control my-2" id="passwordInput">
+                <label for="passwordInput">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="confirmPassword" required placeholder="Confirm password" class="form-control my-2" id="confirmPasswordInput">
+                <label for="confirmPasswordInput">Confirm password</label>
+            </div>
+            <input type="submit" value="Sign up" class="margin" id="submit-btn">
+        </form>
     </div>
+
+    <p id="divider"><span>or</span></p>
+
+    <!--Social logins-->
+    <div class="container-border center-align">
+        <a href="/users/auth/google"><i class="fa-brands fa-google"></i> Sign up with Google</a>
+        <br><br>
+        <a href="/users/auth/facebook"><i class="fa-brands fa-facebook"></i> Sign up with Facebook</a>
+        <br><br>
+        <a href="/users/auth/github"><i class="fa-brands fa-github"></i> Sign up with Github</a>
+    </div>
+    
+    <div class="my-4">
+        <a href="/users/signin">Already have an account? Sign in</a>
+    </div>
+    <p><small>By Signing up you agree to our Terms, Privacy Policy and Cookie Policy.</small></p>
+</div>

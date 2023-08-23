@@ -1,0 +1,23 @@
+<div class="collapse" id="updateProfileForm">
+    <form action="/users/update/<%= user.id %>" method="post" enctype="multipart/form-data">
+        <hr>
+        <p class="fs-4 fw-bold">Update user details</p>
+        <label for="email" class="form-label fw-bold">Email</label>
+        <input type="email" readonly name="email" placeholder="Your Email" value="<%= profile_user.email %>" required id="email" class="form-control-plaintext">
+        <br>
+        <label for="name" class="form-label fw-bold">Name</label>
+        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name %>" required id="name" class="form-control">
+        <br>
+        <label for="about" class="form-label fw-bold">Bio</label>
+        <input type="text" name="about" placeholder="Tell something about yourself" value="<%= profile_user.about %>" required id="about" class="form-control" maxlength="50" size="50">
+        <br>
+        <label for="profile-pic-input" class="form-label fw-bold">Profile picture</label>
+        <br>
+        <img src="<%= profile_user.avatar %>" width="100" height="100" id="previewImage">
+        <br>
+        <br>
+        <input type="file" name="avatar" placeholder="profile picture" id="profile-pic-input" class="form-control" accept="image/*"/>
+        <br>
+        <input type="submit" value="Update" class="btn btn-outline-dark">
+    </form>
+</div>

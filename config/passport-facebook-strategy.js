@@ -2,6 +2,7 @@ const passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 const crypto = require('crypto');
 const User = require('../models/user');
+const path = require('path');
 
 //creating passport strategy
 passport.use(new FacebookStrategy({
@@ -22,7 +23,8 @@ passport.use(new FacebookStrategy({
                 User.create({
                     name: profile.displayName,
                     email: profile.id,
-                    password: crypto.randomBytes(20).toString('hex')
+                    password: crypto.randomBytes(20).toString('hex'),
+                    avatar: path.join(User.default_avatar)
                 }).then(function(user){
                     return done(null, user); 
                 }).catch((err)=>{

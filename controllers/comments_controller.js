@@ -46,8 +46,10 @@ module.exports.destroy = async function(req, res){
   try{
     if (req.isAuthenticated()){
       let comment = await Comments.findById(req.params.id);
-      if (comment.user.toString() == req.user.id){
-        let postId = comment.post;
+      let postId = comment.post;
+      let post = await Post.findById(postId).populate('user');
+      if (comment.user.toString() == req.user.id || post.user._id.toString()==req.user.id){
+        
         await Comments.deleteOne({ _id: req.params.id });
         await Post.findByIdAndUpdate(postId, {$pull:{comments:req.params.id}});
         await Like.deleteMany({likeable: comment._id, onModel: 'Comment'});
