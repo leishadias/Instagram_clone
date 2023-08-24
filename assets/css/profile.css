@@ -26,10 +26,6 @@
     float: right;
 }
 
-.pointer-cursor{
-    cursor: pointer;
-}
-
 /*screen resizing*/
 @media only screen and (max-width: 1200px) {
     main{

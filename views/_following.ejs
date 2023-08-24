@@ -1,21 +1,22 @@
+<!--shows list of followings-->
 <div class="modal fade" id="following-list" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Following</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <% for (u of profile_user.following){ %>
-                <a href="/users/profile/<%= u.id %>">
-                    <div>
-                        <img src="<%= u.avatar %>" width="20px">
-                        <span><b><%= u.name %></b></span>
-                    </div>
-                </a>
-                <hr>
-            <% } %>
-        </div>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Following</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <% for (u of profile_user.following){ %>
+            <a href="/users/profile/<%= u.id %>">
+              <div>
+                <img src="<%= u.avatar %>" width="20px">
+                <span><b><%= u.name %></b></span>
+              </div>
+            </a>
+            <hr>
+          <% } %>
       </div>
     </div>
+  </div>
 </div>

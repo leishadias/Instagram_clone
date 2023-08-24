@@ -1,11 +1,11 @@
 const User = require('../models/user');
 const Post = require('../models/post');
-const ResetToken = require('../models/reset_pw_token');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const userMailer = require('../mailers/users_mailer');
 
+//loading user profile
 module.exports.profile = async function(req, res){
     try{
         if (req.isAuthenticated()){
@@ -36,11 +36,13 @@ module.exports.profile = async function(req, res){
             return res.redirect('/users/signin');
         }
     }catch(err){
-        req.flash('error', err);//console.log('error in loading profile', err);
+        req.flash('error', err);
+        console.log('error in loading profile', err);
         return;
     }
 };
 
+//signup page loading
 module.exports.signup = function(req, res){
     if (req.isAuthenticated()){
         return res.redirect('/users/profile');
@@ -50,6 +52,7 @@ module.exports.signup = function(req, res){
     });
 };
 
+//signin page loading
 module.exports.signin = function(req, res){
     if (req.isAuthenticated()){
         return res.redirect('/users/profile');
@@ -59,33 +62,29 @@ module.exports.signin = function(req, res){
     });
 };
 
-
+//sign in user/ create session
 module.exports.createSession = function(req, res){
     req.flash('success', 'log in success');
     return res.redirect('/');
 };
 
+//create new user
 module.exports.create = async function(req, res){
     try{
+        //check is password and confirm password is same
         if (req.body.password != req.body.confirmPassword){
             req.flash('error', 'Confirmation password incorrect');
             return res.redirect('back');
         }
+        //check if account already exists
         let user = await User.findOne({email: req.body.email});
         if (!user){
-            // user.name=req.body.name;
-            // user.email=req.body.email;
-
-            // if(req.file){
-            //     if (user.avatar){
-                //     fs.unlinkSync(path.join(__dirname,"..",user.avatar));
-                // }
-                
-            // }
+            //create new user
             user = await User.create(req.body);
             user.avatar=path.join(User.default_avatar);
             user.save();
-
+            //send welcome mail to user
+            userMailer.signupSuccess(user);
             req.flash('success', 'Account created successfully');
             return res.redirect('/users/signin');
         }else{
@@ -98,6 +97,7 @@ module.exports.create = async function(req, res){
     }
 };
 
+//sign out/destroy session
 module.exports.destroySession=function(req, res){
     try{
         req.logout(function(err) {
@@ -111,27 +111,22 @@ module.exports.destroySession=function(req, res){
     }
 }
 
+//update profile information
 module.exports.update=async function(req,res){
     try{
-        // if (req.user.id==req.params.id){
-        //     await User.findByIdAndUpdate(req.params.id, req.body);
-        //     req.flash('success', 'Details updated successfully');
-        //     return res.redirect('back');
-        // }else{
-        //     return res.status(401).send('Unauthorised');
-        // }
         let user = await User.findById(req.params.id);
         User.uploadedAvatar(req,res,function(err){
             if (err){
                 console.log("error in multer", err);
                 return;
             }
+            //only if the editing profile is of the current user
             if (req.user.id==req.params.id){
                 user.name=req.body.name;
                 user.email=req.body.email;
-
                 if(req.file){
                     if (user.avatar){
+                        //delete existing avatar
                         fs.unlinkSync(path.join(__dirname,"..",user.avatar));
                     }
                     user.avatar=path.join(User.avatarPath, req.file.filename);
@@ -149,46 +144,7 @@ module.exports.update=async function(req,res){
     }
 }
 
-
-
-// module.exports.resetPassword = async function(req, res){
-//     try{
-//         //check if existing any active row is present
-//         let user = await User.findOne({user: req.params.id, isValid: true});
-//         if(user){
-//           //send same token mail again
-
-//           userMailer.resetPassword(user);
-//         }else{
-//             //create new token and send mail
-//             user = await ResetToken.create({
-//                 user: req.params.id,
-//                 accessToken: createToken(),
-//                 isValid: true
-//             });
-//             await comment.populate('user', 'name email');
-//             userMailer.resetPassword(user);
-//         }
-//         req.flash('success', 'Reset link sent to email');
-//     }catch(err){
-//         req.flash('error', err); //console.log('error', err);
-//         return res.redirect('back');
-//     }
-// }
-
-// function createToken() {
-//     let result = '';
-//     let length=10;
-//     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//     const charactersLength = characters.length;
-//     let counter = 0;
-//     while (counter < length) {
-//       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-//       counter += 1;
-//     }
-//     return result;
-// }
-
+//reset password page loading (enter mail address)
 module.exports.resetPassword = function(req, res)
 {
     try{
@@ -204,12 +160,12 @@ module.exports.resetPassword = function(req, res)
     }
 }
 
+//send change password link to mail
 module.exports.resetPassMail = async function(req, res)
 {
     try{
         let user = await User.findOne({email: req.body.email});
         if(user){
-            // console.log('user, ', user.isTokenValid);
             if(user.isTokenValid == false)
             {
                 user.accessToken = crypto.randomBytes(30).toString('hex');
@@ -217,7 +173,6 @@ module.exports.resetPassMail = async function(req, res)
                 user.save();
             }
             userMailer.resetPassword(user);
-            // console.log("link sent");
             req.flash('success', 'Password reset link sent to mail');
             return res.redirect('/users/signin');
         }else{
@@ -232,10 +187,10 @@ module.exports.resetPassMail = async function(req, res)
     }
 }
 
+//set new password page loading
 module.exports.setPassword = async function(req, res)
 {
     try{
-        // console.log("req.params.accessToken", req.params.accessToken);
         let user = await User.findOne({accessToken: req.params.accessToken});
         if(user.isTokenValid == true)
         {
@@ -258,6 +213,7 @@ module.exports.setPassword = async function(req, res)
     }
 }
 
+//update password
 module.exports.updatePassword = async function(req, res)
 {
     try{
@@ -267,6 +223,7 @@ module.exports.updatePassword = async function(req, res)
             if(req.body.newPass == req.body.confirmPass)
             {
                 user.password = req.body.newPass;
+                //set token valid as false
                 user.isTokenValid = false;
                 user.save();
                 req.flash('success', "Password updated. Login now!");

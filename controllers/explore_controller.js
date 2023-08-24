@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 const User = require('../models/user');
 
+//explore page loading
 module.exports.explore = async function(req, res){
     try{
         if (req.isAuthenticated()){

@@ -1,38 +1,38 @@
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <link rel="stylesheet" type="text/css" href="/css/friends.css">
+<link rel="stylesheet" type="text/css" href="/css/posts.css">
+<link rel="stylesheet" type="text/css" href="/css/comment.css">
+
 <div id="home-container container">
     <div class="row">
-    <div id="post-container" class="col-lg-10 col-12">
-        <!-- <section id="content">
-            <div id="post-section">
-            </div>
-        </section> -->
-        
-        <section id="post-list-container">
-            <ul>
-                <% var postcount =0 %>
-                <% for (post of postlist){ %>
-                    <% if(locals.user.following.includes(post.user._id) || post.user._id==user.id){ %>
-                        <% postcount++ %>
-                        <%- include('_post') -%>
+        <div id="post-container" class="col-lg-10 col-12">
+            <section id="post-list-container">
+                <ul>
+                    <!--Posts (includes posts of self and the users the current user follows (following list))-->
+                    <% var postcount =0 %>
+                    <% for (post of postlist){ %>
+                        <% if(locals.user.following.includes(post.user._id) || post.user._id==user.id){ %>
+                            <% postcount++ %>
+                            <%- include('_post') -%>
+                        <% } %>
                     <% } %>
-                <% } %>
-                <% if (postcount==0){ %>
-                    <div id="no-posts">
-                        <p>Uh oh! no posts to show. Follow someone right now to see what they're posting!</p>
-                    </div>
-                <% } %>
-            </ul>
-        </section>
+                    <!--if no posts to be shown-->
+                    <% if (postcount==0){ %>
+                        <div id="no-posts">
+                            <p>Uh oh! no posts to show. Follow someone right now to see what they're posting!</p>
+                        </div>
+                    <% } %>
+                </ul>
+            </section>
+        </div>
+        <!--Suggestions of other accounts to follow-->
+        <% if (title == 'home'){ %>
+            <%- include('_friends'); %>
+        <% } %>
     </div>
-    <% if (title == 'home'){ %>
-        <%- include('_friends'); %>
-    <% } %>
 </div>
-</div>
-<script src="javascript/home_comments.js"></script>
-<!-- <script src="javascript/home_posts.js"></script> -->
-
+<script src="/javascript/home_comments.js"></script>
+<script src="/javascript/home_posts.js"></script>
 <script src="/javascript/toggle_likes.js"></script>
 <script>
     $('.toggle-like-button').each(function(){

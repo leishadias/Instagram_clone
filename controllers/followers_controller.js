@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+//follow
 module.exports.create = async function(req,res){
     try{
         if (req.isAuthenticated()){
@@ -24,6 +25,7 @@ module.exports.create = async function(req,res){
     }
 }
 
+//unfollow
 module.exports.destroy = async function(req,res){
     try{
         if (req.isAuthenticated()){

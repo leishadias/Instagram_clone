@@ -1,13 +1,12 @@
 const nodemailer = require('../config/nodemailer');
 const ejs = require('ejs');
 
-exports.newComment = async function(comment){
-    let htmlString = await nodemailer.renderTemplate({comment:comment},'/comments/new_comment.ejs');
-    console.log(htmlString);
+exports.newPost = async function(post){
+    let htmlString = await nodemailer.renderTemplate({post:post},'/posts/new_post.ejs');
     nodemailer.transporter.sendMail({
        from: 'leid00123456@gmail.com',
-       to: comment.user.email,
-       subject: "New comment published",
+       to: post.user.email,
+       subject: "New Post Uploaded",
        html: htmlString 
     }).then((info)=>{
         console.log("mail sent", info);

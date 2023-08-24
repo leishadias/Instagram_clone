@@ -1,9 +1,12 @@
 <link rel="stylesheet" type="text/css" href="/css/explore.css">
+<link rel="stylesheet" type="text/css" href="/css/posts.css">
+<link rel="stylesheet" type="text/css" href="/css/comment.css">
 
 <div id="home-container">
     <div id="post-container">
         <section id="post-list-container">
             <ul>
+                <!--Shows list of posts from all users (excluding self)-->
                 <% for (post of postlist){ %>
                     <% if(locals.user.id!=post.user._id){ %>
                         <%- include('_post') -%>

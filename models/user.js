@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema({
     timestamps:true
 });
 
+//multer for user avatar
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname,'..',AVATAR_PATH))

@@ -1,88 +1,71 @@
 <div>
     <div id="logo">
-            <i class="fa-brands fa-instagram hidden"></i>
-            <img src="/images/logo.png" alt="logo" class="to-hide">
+        <!--logo shown by default. on navigation bar resizing for smaller resolution screens, show the icon-->
+        <i class="fa-brands fa-instagram hidden"></i>
+        <img src="/images/logo.png" alt="logo" class="to-hide">
     </div>
     <% if(locals.user){ %>
-    <ul id="nav-items">
-        <li title="Home">
-            <a class="padding-05" href="/"><i class="fa-solid fa-house"></i>
-                <span class="to-hide">Home</span>
-            </a>
-        </li>
-        <li id="searchBtnList" title="Search">
-            <a href="#">
-            <div id="search-btn" data-bs-toggle="modal" data-bs-target="#searchlist" class="padding-05">
-                <i class="fa-solid fa-magnifying-glass"></i>
-
+        <!--navigation items list (icon and name shown by default. on resizing for smaller resolutions, only icon.(tooltip option given))-->
+        <ul id="nav-items">
+            <li title="Home">
+                <a class="padding-05" href="/">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="to-hide">Home</span>
+                </a>
+            </li>
+            <li id="searchBtnList" title="Search">
+                <div id="search-btn" data-bs-toggle="modal" data-bs-target="#searchlist" class="padding-05 pointer-cursor">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                     <span class="to-hide">Search</span>
-            </div>   
-        </a>
-        </li>
-        <li title="Messages">
-            <a class="padding-05" href="/messages/chats" id="notif">
-                <i class="fa-brands fa-facebook-messenger"></i>
+                </div> 
+            </li>
+            <li title="Messages">
+                <a class="padding-05" href="/messages/chats" id="notif">
+                    <i class="fa-brands fa-facebook-messenger"></i>
                     <span class="to-hide">Messages</span>
-            </a>
-        </li>
-        <li title="Create">
-            <a class="padding-05" href="/posts/create-new-post"><i class="fa-regular fa-square-plus"></i>
+                </a>
+            </li>
+            <li title="Create">
+                <a class="padding-05" href="/posts/create-new-post">
+                    <i class="fa-regular fa-square-plus"></i>
                     <span class="to-hide">Create</span>
-            </a>
-        </li>
-        <li title="Explore">
-            <a class="padding-05" href="/explore"><i class="fa-sharp fa-regular fa-compass"></i>
+                </a>
+            </li>
+            <li title="Explore">
+                <a class="padding-05" href="/explore">
+                    <i class="fa-sharp fa-regular fa-compass"></i>
                     <span class="to-hide">Explore</span>
-
-            </a>
-        </li>
-        <!-- <li>
-            <a class="padding-05" href="#"><i class="fa-regular fa-heart"></i>
-                <% if (title == 'chats'){ %>
-                    <span class="hide">Notifications</span>
-                <% }else{ %>
-                    <span>Notifications</span>
-                <% } %>
-            </a>
-            
-        </li> -->
-        <li title="Profile">
-            <a class="padding-05" href="/users/profile/<%= user.id%>"><img src="<%=user.avatar%>" alt="avatar" class="avatar">
+                </a>
+            </li>
+            <li title="Profile">
+                <a class="padding-05" href="/users/profile/<%= user.id%>">
+                    <img src="<%=user.avatar%>" alt="avatar" class="avatar">
                     <span class="to-hide">Profile</span>
-
-            </a>
-            
-        </li>
-        <li title="More">
-            <!-- <a href="#"> -->
-            <div class="padding-05 dropend">
-                <div data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i>
+                </a>
+            </li>
+            <li title="More">
+                <div class="padding-05 dropend pointer-cursor">
+                    <div data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i>
                         <span class="to-hide">More</span>
-
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="/users/signout"><span>Sign out</span></a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="dropdown-menu">
-                  <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
-                  <li><a class="dropdown-item" href="/users/signout">
-                        <span>Sign out</span>
-                </a></li>
-                </ul>
-            </div>
-            <!-- </a> -->
-        </li>
-    </ul>
+            </li>
+        </ul>
 
     <% }else{ %>
         <ul>
             <li>
                 <a class="padding-05" href="/users/signin"><i class="fa-solid fa-user"></i><span class="to-hide">Sign in</span></a>
-                
             </li>
             <li>
                 <a class="padding-05" href="/users/signup"><i class="fa-solid fa-user-plus"></i><span class="to-hide">Sign up</span></a>
-                
             </li>
         </ul>
     <% } %>
-
-    </div>
+</div>

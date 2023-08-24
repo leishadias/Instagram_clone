@@ -69,7 +69,7 @@ class PostComments{
                         </a>
                         <div class="padding-05">
                             <div data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis-vertical color-grey"></i>
+                                <i class="fa-solid fa-ellipsis-vertical color-grey pointer-cursor"></i>
                             </div>
                             <ul class="dropdown-menu">
                                 <li>

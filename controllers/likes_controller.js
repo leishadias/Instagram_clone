@@ -5,8 +5,6 @@ const Comment = require('../models/comments');
 
 module.exports.toggleLike = async function(req, res){
     try{
-        // console.log("inside like");
-        // likes/toggle/?id=abcdef&type=Post
         if (req.isAuthenticated()){
             let likeable;
             let deleted = false;
@@ -32,11 +30,10 @@ module.exports.toggleLike = async function(req, res){
                     likeable: req.query.id,
                     onModel: req.query.type,
                     user: req.user.id
-                }); //delete post
-                // existingLike.remove();
+                }); 
                 deleted = true;
             }else{
-                // else make a new like
+                // else create a new like
                 let newLike = await Like.create({
                     user: req.user._id,
                     likeable: req.query.id,

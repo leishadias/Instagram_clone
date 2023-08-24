@@ -1,69 +1,11 @@
 <link rel="stylesheet" type="text/css" href="/css/profile.css">
+<link rel="stylesheet" type="text/css" href="/css/posts.css">
+<link rel="stylesheet" type="text/css" href="/css/comment.css">
 
 <div class="container pt-4">
     <!--User details-->
     <div class="row">
-        <div class="col-md-2">
-            <img src="<%= profile_user.avatar %>" alt="avatar" id="profile-avatar">
-        </div>
-        <div class="col">
-            <div class="container fw-bold">
-                <div class="row p-2">
-                    <div class="col">
-                        <span class="user-name"><%= profile_user.name %></span>
-                    </div>
-                    <div class="col">
-                        <% if(profile_user.id == user.id){ %>
-                            <a class="btn btn-outline-dark float-right" data-bs-toggle="collapse" href="#updateProfileForm" aria-expanded="false" aria-controls="updateProfileForm">
-                                Edit profile
-                            </a>
-                        <% }else if(!locals.user.following.find(x => x.toString() === profile_user.id)){ %>
-                            <% if(locals.user.followers.find(x => x.toString() === profile_user.id)){ %>
-                                <a class="btn btn-outline-dark float-right" href="/follower/create/?toid=<%=profile_user._id%>">
-                                    Follow back
-                                </a>
-                            <%}else{%>
-                                <a class="btn btn-outline-dark float-right" href="/follower/create/?toid=<%=profile_user._id%>">
-                                    Follow
-                                </a>
-                            <%}%> 
-                        <% }else if(locals.user.following.find(x => x.toString() === profile_user.id)){ %> 
-                            <a class="btn btn-outline-dark float-right" href="/follower/destroy/?toid=<%=profile_user._id%>">
-                                Unfollow
-                            </a>
-                        <%}%>
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <!--post count-->
-                    <div class="col">
-                        <%= profile_user.posts.length %> posts
-                    </div>
-
-                    <!--followers list-->
-                    <div class="col">
-                        <p data-bs-toggle="modal" data-bs-target="#followers-list" class="pointer-cursor">
-                            <%= profile_user.followers.length %> followers
-                        </p>  
-                        <%- include('_followers') -%>
-                    </div>
-
-                    <!--following list-->
-                    <div class="col">
-                        <p data-bs-toggle="modal" data-bs-target="#following-list" class="pointer-cursor">
-                            <%= profile_user.following.length %> following
-                        </p>                          
-                        <%- include('_following') -%>
-                    </div>
-                </div>
-                <div class="row p-2">
-                    <div class="col"><%= profile_user.about %></div>
-                </div>
-                <div class="row p-2">
-                    <div class="col"><%= profile_user.email %></div>
-                </div>
-            </div>
-        </div>
+        <%- include('_profile_detail') -%>
     </div>
 
     <!--Update profile form-->

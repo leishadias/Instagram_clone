@@ -1,3 +1,4 @@
+<!--Friends suggestions(all users are fetched and in case the current user doesn't follow any user then profile is shown)-->
 <div id="friends-list-container" class="m-top col-md col-0">
     <div class="m-top m-bottom suggest-head">
         <span class="col-grey">Suggestions For You</span>
@@ -5,10 +6,12 @@
     <div id="user-friends" class="suggest-container m-top" >
         <% var suggestionCount =0; %>
         <% for (u of all_users){ %>
+            <!--upto 6 users are shown-->
             <% if(suggestionCount>=6){ %>
                 <% break; %>
             <% } %>
             <% if(u.id!=user.id){ %>
+                <!--follows current user. so follow back option-->
                 <% if(locals.user.followers.includes(u.id) && !locals.user.following.includes(u.id)) { %>
                     <% suggestionCount++ %>
                     <a href="/users/profile/<%= u.id %>">
@@ -39,11 +42,3 @@
         <% } %>
     </div>
 </div>
-
-<!-- <section id="user-friends">
-        <% for (u of all_users){ %>
-            <p>
-                <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-            </p>
-        <% } %>
-    </section>-->

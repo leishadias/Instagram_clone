@@ -2,14 +2,13 @@ const Comments = require('../models/comments');
 const Post = require('../models/post');
 const Like = require('../models/like');
 
-const commentsMailer = require('../mailers/comments_mailer');
-
+//create comment
 module.exports.create = async function (req, res) {
   try {
     if (req.isAuthenticated()){
       let post = await Post.findById(req.body.post);
       if (!post) {
-        req.flash('error', 'Post not found while creating comment'); //console.log('Post not found while creating comment');
+        req.flash('error', 'Post not found while creating comment'); 
         return res.redirect('back');
       }
       let comment = await Comments.create({
@@ -20,8 +19,6 @@ module.exports.create = async function (req, res) {
 
       post.comments.push(comment);
       await post.save();
-      await comment.populate('user', 'name email');
-      commentsMailer.newComment(comment);
 
       if(req.xhr){
         return res.status(200).json({
@@ -42,6 +39,7 @@ module.exports.create = async function (req, res) {
   }
 };
 
+//delete comment
 module.exports.destroy = async function(req, res){
   try{
     if (req.isAuthenticated()){

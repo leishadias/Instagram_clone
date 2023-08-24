@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const chatroomSchema = new mongoose.Schema({
     user1: {
         type: mongoose.Schema.Types.ObjectId,

@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/87f063257c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <link rel="stylesheet" type="text/css" href="/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="/css/header.css">
-    <link rel="stylesheet" type="text/css" href="/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="/css/search.css">
-    <link rel="stylesheet" type="text/css" href="/css/footer.css">
-    <%- style %>
-</head>
-<body>
-    <nav>
-        <% if(locals.user){ %>
-            <%- include('_navbar'); %>
-        <% } %>
-    </nav>
-    <main>
-        <section>
-            <%- body %>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/87f063257c.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+        <link rel="stylesheet" type="text/css" href="/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="/css/search.css">
+        <%- style %>
+    </head>
+    <body>
+        <nav>
             <% if(locals.user){ %>
-                <%- include('_search'); %>
+                <%- include('_navbar'); %>
             <% } %>
-            
-        </section>
-    </main>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-    <script>
-        <% if(flash.success && flash.success.length>0){ %>
-            new Noty({
-                theme: 'relax',
-                text: '<%= flash.success %>',
-                type: 'success',
-                layout: 'topRight',
-                timeout: 1500
-            }).show();
-        <% } %>
-        <% if(flash.error && flash.error.length>0){ %>
-            new Noty({
-                theme: 'relax',
-                text: '<%= flash.error %>',
-                type: 'error',
-                layout: 'topRight',
-                timeout: 1500
-            }).show();
-        <% } %>
-    </script>
-    <!-- <script type="text/javascript" src="javascript/script.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="/javascript/search.js"></script>
-    <script src="/javascript/navbar.js"></script>
-    <%- script %>
-
-</body>
+        </nav>
+        <main>
+            <section>
+                <%- body %>
+                <!--Serach option from navbar-->
+                <% if(locals.user){ %>
+                    <%- include('_search'); %>
+                <% } %>
+            </section>
+        </main>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <!--flash messages- success and error-->
+        <script>
+            <% if(flash.success && flash.success.length>0){ %>
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.success %>',
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 1500
+                }).show();
+            <% } %>
+            <% if(flash.error && flash.error.length>0){ %>
+                new Noty({
+                    theme: 'relax',
+                    text: '<%= flash.error %>',
+                    type: 'error',
+                    layout: 'topRight',
+                    timeout: 1500
+                }).show();
+            <% } %>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="/javascript/search.js"></script>
+        <script src="/javascript/navbar.js"></script>
+        <%- script %>
+    </body>
 </html>

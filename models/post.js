@@ -15,7 +15,6 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    //include ID of all arrays
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
@@ -30,6 +29,7 @@ const postSchema = new mongoose.Schema({
     timestamps:true
 });
 
+//multer for post image
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join(__dirname,'..',POSTS_IMG_PATH))

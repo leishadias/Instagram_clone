@@ -13,5 +13,4 @@ router.use('/likes', require('./likes'));
 router.use('/follower', require('./follower'));
 router.use('/messages',require('./messages'));
 
-
 module.exports=router;

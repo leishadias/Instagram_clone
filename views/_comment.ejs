@@ -1,3 +1,4 @@
+<!--shows all comments-->
 <li id="comment-<%= comment._id %>" class="comment-container">
     <div class="comment-content">
         <div>
@@ -5,10 +6,11 @@
             <span><%= comment.content %></span>
         </div>
         <div>
+            <!--comment interaction-->
             <small class="comment-interction">
-                <!-- <i class="bi bi-heart spacebtwn"></i> -->
                 <a class="toggle-like-button" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
                     <% var liked = false %>
+                    <!--check if current user has liked it-->
                     <% for (var i=0; i<comment.likes.length; i++){ %>
                         <% if(comment.likes[i].user == user.id){ %>
                             <i class="fa-solid fa-heart" style="color: #e00606;"></i>
@@ -20,15 +22,13 @@
                         <i class="fa-regular fa-heart"></i>
                     <% } %>
                 </a>
+                <!--comment delete option if the comment is of the current user or if the post is of the current user-->
                 <% if (locals.user && (locals.user.id == comment.user.id || locals.user.id == post.user.id)){ %>
-                    <!-- <a href="/comments/destroy/<%= comment.id %>"><i class="bi bi-trash3"></i></a> -->
                     <div class="padding-05">
                         <div data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-ellipsis-vertical color-grey"></i>
-                            <!-- <i class="fa-solid fa-ellipsis color-grey"></i> -->
+                            <i class="fa-solid fa-ellipsis-vertical color-grey pointer-cursor"></i>
                         </div>
                         <ul class="dropdown-menu">
-                            <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
                             <li>
                                 <a class="delete-comment-button dropdown-item" href="/comments/destroy/<%= comment.id %>">
                                     <i class="bi bi-trash3"></i> Delete
@@ -37,20 +37,9 @@
                         </ul>
                     </div>
                 <% } %>
-                <!-- <br> -->
-                
-
             </small>
             <span id="like-count-<%=comment._id%>" class="likes-count"><%= comment.likes.length %> Likes</span>
         </div>
-        <!-- <br> -->
-        
-        <!-- <a href="#" class="comment-reply-btn"><small>Reply</small></a> -->
     </div>
     <hr>
 </li>
-
-<!-- <div class="caption">
-    <b><%= post.user.name %></b>
-    <span><%= post.caption %></span>
-</div> -->
