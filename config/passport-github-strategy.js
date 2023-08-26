@@ -7,8 +7,8 @@ const path = require('path');
 
 //creating passport strategy
 passport.use(new GitHubStrategy({
-    clientID : "e6058f2a95197b5e3c4e",
-    clientSecret : "54fc6aebd4b99e33170e848aebadd6d18f0886a1",
+    clientID : "********",
+    clientSecret : "*******",
     callbackURL :  "http://localhost:8000/users/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, done){
