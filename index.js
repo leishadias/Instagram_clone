@@ -52,7 +52,7 @@ app.set('views', './views');
 app.use(
   session({
     name: 'instagram',
-    secret: 'bu9BthnFajqZjoYdeXv6v89H7CCPpm5r',
+    secret: '*****',
     saveUninitialized: false,
     resave: false,
     cookie: {
