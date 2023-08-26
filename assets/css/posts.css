@@ -1,5 +1,6 @@
 .post{
     border: 1px solid lightgray;
+    margin-top: 5px;
 }
 
 .items-align{
@@ -59,4 +60,3 @@
 .w-100{
     width: 100%;
 }
-

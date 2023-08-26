@@ -27,7 +27,7 @@ module.exports.profile = async function(req, res){
             .populate('followers')
             .populate('following');
             return res.render('profile', {
-                title:"profile",
+                title:'Instagram | Profile',
                 postlist: posts,
                 profile_user: user,
                 all_users: users
@@ -48,7 +48,7 @@ module.exports.signup = function(req, res){
         return res.redirect('/users/profile');
     }
     return res.render('user_sign_up', {
-        title:"sign up"
+        title:"Instagram | Sign up"
     });
 };
 
@@ -58,7 +58,7 @@ module.exports.signin = function(req, res){
         return res.redirect('/users/profile');
     }
     return res.render('user_sign_in', {
-        title:"sign in"
+        title:"Instagram | Sign in"
     });
 };
 
@@ -139,7 +139,7 @@ module.exports.update=async function(req,res){
             }
         });
     }catch(err){
-        req.flash('error', err); //console.log('error', err);
+        req.flash('error', err); 
         return res.redirect('back');
     }
 }

@@ -4,7 +4,6 @@
 }
 
 #post-container{
-    /* width:85%; */
     padding: 10px;
 }
 
@@ -17,9 +16,4 @@
     font-size: larger;
     text-align: center;
     margin-top: 5rem;
-}
-
-/*screen resizing*/
-@media only screen and (max-width: 1200px) {
-    
 }

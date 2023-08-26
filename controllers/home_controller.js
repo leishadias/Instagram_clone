@@ -10,14 +10,18 @@ module.exports.home = async function(req, res){
             .populate({
                 path: 'comments',
                 populate: [
-                    { path: 'user' },
-                    { path: 'likes' }
+                    {
+                        path: 'user'
+                    },
+                    {
+                        path: 'likes'
+                    }
                 ]
             })
             .populate('likes');
             let users = await User.find({});
             return res.render('home', {
-                title:"home",
+                title:"Instagram | Home",
                 postlist: posts,
                 all_users: users
                 });

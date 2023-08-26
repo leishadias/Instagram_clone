@@ -10,17 +10,19 @@ module.exports.explore = async function(req, res){
             .populate('user')
             .populate({
                 path: 'comments',
-                populate: {
-                    path: 'user'
-                },
-                populate: {
-                    path: 'likes'
-                }
+                populate: [
+                    {
+                        path: 'user'
+                    },
+                    {
+                        path: 'likes'
+                    }
+                ]
             })
             .populate('likes');
             let users = await User.find({});
             return res.render('explore', {
-                title:"explore",
+                title:"Instagram | Explore",
                 postlist: posts,
                 all_users: users
                 });

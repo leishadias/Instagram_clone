@@ -6,8 +6,6 @@ body{
 }
 
 main{
-    /* display: flex; */
-    /* display: inline-block; */
     margin-left: 180px;
     width: 98%;
     padding-right: 15px;
@@ -26,22 +24,6 @@ i{
 .padding-10{
     padding-right: 10%;
     padding-left: 10%;
-}
-
-.bg-dark{
-    background-color: #fafafa;
-}
-
-.bg-white{
-    background-color: #ffffff;
-}
-
-.m-top{
-    margin-top: 0.5rem;
-}
-
-.m-bottom{
-    margin-bottom: 0.5rem;
 }
 
 a{

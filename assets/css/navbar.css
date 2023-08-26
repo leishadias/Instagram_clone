@@ -3,14 +3,12 @@ nav{
     border-right: 1px solid lightgray;
     padding:  15px;
     position: fixed;
-    /* width: 150px; */
     flex-basis: 190px;
 }
 
 nav ul{
     list-style: none;
     padding: 5px 0;
-    /* margin: 0; */
 }  
 
 nav #nav-items>li{
@@ -36,15 +34,9 @@ nav #nav-items>li:hover{
     text-align: center;
 }
 
-#logo i{
-    /* width: 10px; */
-}
-
 nav .avatar{
     width: 35px;
 }
-
-
 
 /*screen resizing*/
 @media only screen and (max-width: 1200px) {
@@ -58,15 +50,11 @@ nav .avatar{
         width: auto;
         visibility: inherit;
         z-index: 1;
-        /* overflow: hidden; */
-        /* display: inline-block; */
     }
     nav{
-        /* flex-basis: 50px; */
         width: 100px;
     }
     nav #nav-items>li{
         padding: 1rem 3px 0;
-        /* border-radius: 15px; */
     }
 }

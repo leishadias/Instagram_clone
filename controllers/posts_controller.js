@@ -84,7 +84,7 @@ module.exports.createPost = async function(req, res){
         let users = await User.find({});
         if (req.isAuthenticated()){
             return res.render('create', {
-                title:"create",
+                title:"Instagram | Create",
                 all_users: users
             });
         }else{

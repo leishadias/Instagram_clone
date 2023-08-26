@@ -12,7 +12,6 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
     function(accessToken, refreshToken, profile, done){
-        // console.log("profile",profile);
         User.findOne({email: profile.id}).exec().then(function(user){
             
             if (user){
@@ -37,7 +36,6 @@ passport.use(new FacebookStrategy({
             return;
         });
     }
-   
 ))
 
 module.exports = passport;

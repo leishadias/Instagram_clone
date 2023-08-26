@@ -15,7 +15,6 @@ module.exports.chatSockets = function(socketServer){
         socket.on('disconnect', function(){
             console.log('socket disconnected!');
         });
-
         
         socket.on('join_room', async function(data){
             console.log('joining request rec.', data);

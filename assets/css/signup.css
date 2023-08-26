@@ -6,8 +6,6 @@
     border: 1px solid grey;
     padding: 1rem;
     text-align: center;
-    /* left: 50%;
-    transform: translate(0 -50%); */
     background-color: aliceblue;
 }
 
@@ -23,23 +21,23 @@
     border-bottom: 1px solid gray; 
     line-height: 0.1em;
     margin: 10px 0 20px; 
- } 
+} 
  
 #divider span { 
-     background:#fff; 
-     padding:0 10px; 
- }
+    background:#fff; 
+    padding:0 10px; 
+}
 
- main{
+main{
     margin: 0;
- }
+}
 
- nav{
+nav{
     width: 0;
     border: none;
 }
 
- @media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     #signup-container{
         width: 70%;
     }

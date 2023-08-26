@@ -16,3 +16,12 @@
         </section>
     </div>
 </div>
+<script src="/javascript/home_comments.js"></script>
+<script src="/javascript/home_posts.js"></script>
+<script src="/javascript/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>

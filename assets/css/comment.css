@@ -17,7 +17,6 @@
 
 .comment-interction i{
     font-size: 15px;
-    /* float: right; */
     margin: 0 5px;
 }
 
@@ -25,8 +24,4 @@
     margin: 1rem;
     font-size:15px;
     color: gray;
-}
-
-.likes-count{
-    /* float: right; */
 }

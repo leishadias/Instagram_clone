@@ -13,7 +13,7 @@ module.exports.userChats = async function (req, res) {
     }
     let users = await User.find({});
     return res.render("chats", {
-      title: "chats",
+      title: "Instagram | Chats",
       followers: follower,
       all_users: users
     });
