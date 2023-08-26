@@ -6,8 +6,8 @@ const path = require('path');
 
 //creating passport strategy
 passport.use(new FacebookStrategy({
-    clientID : "969567850762354",
-    clientSecret : "cb6c28e25be2da60804428a47b13850f",
+    clientID : "*******",
+    clientSecret : "*******",
     callbackURL :  "http://localhost:8000/users/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
