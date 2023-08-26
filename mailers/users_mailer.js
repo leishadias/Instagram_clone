@@ -4,7 +4,7 @@ const nodemailer = require('../config/nodemailer');
 exports.resetPassword = async function(user){
     let htmlString = await nodemailer.renderTemplate({user:user},'/user/password_reset.ejs');
     nodemailer.transporter.sendMail({
-       from: 'leid00123456@gmail.com',
+       from: '******@gmail.com',
        to: user.email,
        subject: "Reset Instagram password",
        html: htmlString 
@@ -21,7 +21,7 @@ exports.resetPassword = async function(user){
 exports.signupSuccess = async function(user){
     let htmlString = await nodemailer.renderTemplate({user: user}, '/user/signup_successful.ejs');
     nodemailer.transporter.sendMail({
-        from: 'leid00123456@gmail.com',
+        from: '******@gmail.com',
         to: user.email,
         subject: "Welcome to Instagram!",
         html: htmlString
