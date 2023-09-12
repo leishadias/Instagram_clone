@@ -2,7 +2,7 @@ let chatArea = $(".chat-room-display");
 let selfUser, userMail, otherUser, currentChatRoom;
 let roomList = [];
 
-var socket = io.connect("http://localhost:5000");
+var socket = io.connect("http://34.207.53.196:5051");
 socket.on("connect", function () {
   console.log("connection established using sockets...!");
 });
