@@ -1,4 +1,7 @@
 const express = require('express');
+//fetch environment variables
+const env = require('./config/environment');
+const logger=require('morgan');
 //importing cookie parser
 const cookieParser = require('cookie-parser');
 const app = express();
@@ -28,7 +31,7 @@ const customMware = require('./config/middleware');
 //setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
+chatServer.listen(5051);
 console.log('chat server is listening on port 5000');
 
 //middleware for form parser
@@ -36,7 +39,8 @@ app.use(express.urlencoded());
 //middleware for cookie parser
 app.use(cookieParser());
 //importing the assets folder
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
+app.use(logger(env.morgan.mode, env.morgan.options));
 // make the uploads path available to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(expressLayouts);
@@ -52,14 +56,14 @@ app.set('views', './views');
 app.use(
   session({
     name: 'instagram',
-    secret: 'bu9BthnFajqZjoYdeXv6v89H7CCPpm5r',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 100,
     },
     store: new MongoStore({
-      mongoUrl: 'mongodb://127.0.0.1:27017/instagram_dev',
+      mongoUrl: `mongodb://127.0.0.1:27017/${env.db}`,
       mongooseConnection: db,
       autoRemove: 'disabled',
     }),
