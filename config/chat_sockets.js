@@ -4,7 +4,7 @@ var room;
 module.exports.chatSockets = function(socketServer){
     let io = require('socket.io')(socketServer, {
         cors: {
-          origin: "http://34.207.53.196:8000",
+          origin: "*",
           methods: ["GET", "POST"]
         }
       });
